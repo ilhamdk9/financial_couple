@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Financial Accounting — Ilham & Adel</title>
+  <style>
+    :root{
+      --bg:#f7f8fb; --card:#fff; --accent:#FF6B5C; --muted:#6b7280;
+      --glass: rgba(255,255,255,0.85);
+    }
+    *{box-sizing:border-box}
+    body{font-family:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial; margin:0; background:linear-gradient(180deg,#f3f5f9 0%,var(--bg) 100%); color:#0f172a; padding:20px}
+    .wrap{max-width:1100px;margin:0 auto}
+    header{display:flex;gap:16px;align-items:center;justify-content:space-between;margin-bottom:18px}
+    .brand{display:flex;gap:12px;align-items:center}
+    .logo{width:46px;height:46px;border-radius:8px;background:var(--accent);display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700}
+    h1{font-size:18px;margin:0}
+    p.lead{margin:0;color:var(--muted);font-size:13px}
+
+    .grid{display:grid;grid-template-columns:1fr 320px;gap:18px;align-items:start}
+    @media(max-width:900px){.grid{grid-template-columns:1fr;}}
+    .card{background:var(--card);border-radius:12px;padding:14px;box-shadow:0 6px 18px rgba(15,23,42,0.06)}
+    .controls{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin-bottom:10px}
+    select,input[type="date"],input[type="text"],input[type="number"]{padding:8px 10px;border-radius:8px;border:1px solid #e6e9ef;background:#fff}
+    button{background:var(--accent);color:#fff;padding:8px 12px;border-radius:8px;border:0;cursor:pointer}
+    button.ghost{background:transparent;border:1px solid #e6e9ef;color:var(--muted)}
+    .small{font-size:13px;padding:6px 8px}
+
+    table{width:100%;border-collapse:collapse;font-size:14px}
+    thead th{font-weight:700;text-align:left;padding:10px 8px;border-bottom:1px solid #eef2f7;color:var(--muted)}
+    tbody td{padding:10px 8px;border-bottom:1px dashed #f1f5f9;vertical-align:middle}
+    .right{text-align:right}
+    .muted{color:var(--muted);font-size:13px}
+    .chip{display:inline-block;padding:6px 8px;border-radius:999px;background:#f1f5f9;font-weight:600;font-size:12px}
+
+    form.row{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+    .row > *{flex:1}
+    .row .small-input{flex:0 0 120px}
+    .row .name-select{flex:0 0 110px}
+    .totals{display:flex;gap:10px;flex-wrap:wrap;margin-top:12px}
+    .total-card{flex:1;padding:10px;border-radius:10px;background:linear-gradient(180deg,#fff,#fbfdff);border:1px solid #f0f5f9}
+    .total-card h3{margin:0;font-size:13px;color:var(--muted)}
+    .total-card p{margin:6px 0 0;font-size:18px;font-weight:700;color:#0b1220}
+    .row label {min-width: 140px; font-size: 14px; color: var(--muted);}
+    .small-input {flex: 0 0 120px;}
+    .profile{display:flex;flex-direction:column;gap:8px}
+    .profile .row{display:flex;gap:8px}
+    .small-muted{font-size:12px;color:var(--muted)}
+
+    .actions {display:flex;gap:6px}
+    .icon-btn{background:transparent;border:0;padding:6px;border-radius:6px;cursor:pointer}
+    .danger{color:#e11d48}
+    footer{margin-top:18px;color:var(--muted);font-size:13px;text-align:center}
+    .empty{padding:20px;text-align:center;color:var(--muted)}
+
+    /* Tambahan untuk responsive */
+    @media (max-width: 768px) {
+      header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+      }
+
+      .grid {
+        grid-template-columns: 1fr;
+      }
+
+      form.row {
+        flex-direction: column;
+        align-items: stretch;
+      }
+
+      .row > * {
+        flex: 1 1 auto !important;
+        width: 100% !important;
+      }
+
+      .row label {
+        min-width: unset;
+      }
+
+      .small-input,
+      .name-select {
+        flex: 1 1 auto;
+        width: 100%;
+      }
+
+      /* Biar tabel bisa digeser di HP */
+      .card table {
+        display: block;
+        overflow-x: auto;
+        white-space: nowrap;
+      }
+
+      table thead, table tbody, table tr, table td, table th {
+        white-space: nowrap;
+      }
+
+      /* Total card agar tampil satu kolom */
+      .totals {
+        flex-direction: column;
+      }
+
+      .total-card {
+        width: 100%;
+      }
+    }
+
+    @media (max-width: 480px) {
+      body {
+        padding: 10px;
+      }
+      h1 {
+        font-size: 16px;
+      }
+      p.lead {
+        font-size: 12px;
+      }
+      button.small {
+        font-size: 12px;
+        padding: 6px 8px;
+      }
+    }
+
+  </style>
+  <!-- Firebase v9 modular -->
+  <script type="module">
+    // ===== FIREBASE SETUP =====
+    // 1) Buat project di https://console.firebase.google.com/
+    // 2) Aktifkan Firestore (Mode: test untuk pengembangan)
+    // 3) Tambah Web App, copy config di bawah dan ganti placeholder
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.11.0/firebase-app.js";
+    import {
+      getFirestore, collection, addDoc, getDocs, query, where,
+      orderBy, onSnapshot, serverTimestamp, setDoc, doc, updateDoc, deleteDoc
+    } from "https://www.gstatic.com/firebasejs/10.11.0/firebase-firestore.js";
+
+    // TODO: REPLACE WITH YOUR FIREBASE CONFIG (from Firebase console -> Project settings -> SDK setup)
+    const firebaseConfig = {
+      apiKey: "AIzaSyCX2a-f1UK7iVC-TlmE2iekJMwIs5ccDQU",
+      authDomain: "financial-couple-dc3cf.firebaseapp.com",
+      projectId: "financial-couple-dc3cf",
+      storageBucket: "financial-couple-dc3cf.firebasestorage.app",
+      messagingSenderId: "533254877895",
+      appId: "1:533254877895:web:52b21c324bcf20f46704e2",
+      measurementId: "G-CJ8VGQGPK0"
+    };
+
+    const app = initializeApp(firebaseConfig);
+    const db = getFirestore(app);
+
+    // ===== APP LOGIC =====
+    const monthSelect = () => document.getElementById('monthSelect');
+    const tableBody = () => document.getElementById('entriesBody');
+    const addForm = () => document.getElementById('entryForm');
+    const profileIlhamInput = () => document.getElementById('salaryIlham');
+    const profileAdelInput = () => document.getElementById('salaryAdel');
+    const savingIlhamInput = () => document.getElementById('savingIlham');
+    const savingAdelInput = () => document.getElementById('savingAdel');
+    const totalsWrap = () => document.getElementById('totalsWrap');
+
+    // helper untuk format rupiah
+    function fmt(x){ return (typeof x!=='number')? x : x.toLocaleString('id-ID', { style:'currency', currency:'IDR', maximumFractionDigits:0 }) }
+
+    // compute next month default
+    function getNextMonthKey(){
+      const now = new Date();
+      const y = now.getFullYear();
+      const m = now.getMonth() + 1; // next month index (0-based + 1)
+      const dt = new Date(y, m, 1); // 1st of next month
+      return `${dt.getFullYear()}-${String(dt.getMonth()+1).padStart(2,'0')}`;
+    }
+
+    // populate month select (6 months window)
+    function populateMonths(){
+      const sel = monthSelect();
+      sel.innerHTML = '';
+      const base = new Date();
+      // start from next month
+      base.setMonth(base.getMonth()+1,1);
+      for(let i=0;i<12;i++){
+        const d = new Date(base.getFullYear(), base.getMonth()+i, 1);
+        const key = `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}`;
+        const label = d.toLocaleString('id-ID',{month:'long', year:'numeric'});
+        const opt = document.createElement('option');
+        opt.value = key; opt.textContent = label;
+        sel.appendChild(opt);
+      }
+      sel.value = getNextMonthKey();
+    }
+
+    // listen to changes and refresh
+    let unsubscribeEntries = null;
+
+    async function loadProfiles(){
+      // profiles stored as doc ids: "ilham" and "adel"
+      const ilhamDoc = doc(db, 'profiles', 'ilham');
+      const adelDoc = doc(db, 'profiles', 'adel');
+      // try fetch
+      try {
+        const snapIlham = await getDocs(query(collection(db,'profiles')));
+        // show if exists, else set defaults
+      } catch(e){}
+      // try read individually using getDocs not necessary; we'll read using onSnapshot for UI reactive
+      // We'll use onSnapshot on profiles collection for reactive updates
+      const profilesCol = collection(db,'profiles');
+      onSnapshot(profilesCol, snap => {
+        let il=0,ad=0,sil=0,sad=0;
+        snap.docs.forEach(d => {
+          const id = d.id.toLowerCase();
+          const data = d.data();
+          if(id==='ilham'){ il = data.salary||0; sil = data.saving||0 }
+          if(id==='adel'){ ad = data.salary||0; sad = data.saving||0 }
+        });
+        profileIlhamInput().value = il;
+        profileAdelInput().value = ad;
+        savingIlhamInput().value = sil;
+        savingAdelInput().value = sad;
+        refreshEntries(); // recalc totals whenever profile changes
+      });
+    }
+
+    // save profile
+    async function saveProfiles(ev){
+      ev?.preventDefault();
+      const il = Number(profileIlhamInput().value)||0;
+      const ad = Number(profileAdelInput().value)||0;
+      const sil = Number(savingIlhamInput().value)||0;
+      const sad = Number(savingAdelInput().value)||0;
+      await setDoc(doc(db,'profiles','ilham'), { salary: il, saving: sil });
+      await setDoc(doc(db,'profiles','adel'), { salary: ad, saving: sad });
+      alert('Profil berhasil disimpan');
+    }
+
+    // add entry handler
+    async function handleAddEntry(ev){
+      ev.preventDefault();
+      const f = addForm();
+      const date = f.date.value;
+      const name = f.name.value;
+      const amount = Number(f.amount.value) || 0;
+      const note = f.note.value || '';
+      if(!date || !name || amount<=0){ alert('Isi tanggal, nama, dan jumlah (lebih dari 0)'); return; }
+      // create document: fields: dateISO, name, amount, note, createdAt
+      await addDoc(collection(db,'entries'), {
+        date: date,
+        name: name,
+        amount: amount,
+        note: note,
+        createdAt: serverTimestamp()
+      });
+      f.reset();
+    }
+
+    // load entries for selected month and bind realtime
+    function refreshEntries(){
+      const sel = monthSelect().value; // "YYYY-MM"
+      if(unsubscribeEntries) unsubscribeEntries();
+      // query entries where date starts with sel (we store date in YYYY-MM-DD)
+      const q = query(collection(db,'entries'), orderBy('date','asc'));
+      unsubscribeEntries = onSnapshot(q, snap => {
+        const rows = [];
+        snap.docs.forEach(docSnap => {
+          const d = docSnap.data();
+          if(typeof d.date==='string' && d.date.startsWith(sel)){
+            rows.push({ id: docSnap.id, ...d });
+          }
+        });
+        renderTable(rows);
+        computeTotals(rows);
+      });
+    }
+
+    // render table rows
+    function renderTable(rows){
+      const tbody = tableBody();
+      tbody.innerHTML = '';
+      if(rows.length===0){
+        tbody.innerHTML = '<tr><td colspan="6" class="empty">Belum ada pengeluaran untuk bulan ini.</td></tr>';
+        return;
+      }
+      rows.forEach((r, idx) => {
+        const dt = new Date(r.date);
+        const hari = dt.toLocaleDateString('id-ID',{weekday:'long'}).toUpperCase();
+        const tr = document.createElement('tr');
+        tr.innerHTML = `
+          <td style="width:36px">${idx+1}</td>
+          <td style="width:130px">${hari}<div class="small-muted" style="font-weight:600">${r.date}</div></td>
+          <td style="width:120px">${r.name}</td>
+          <td class="right">${fmt(r.amount)}</td>
+          <td>${r.note || ''}</td>
+          <td style="width:80px" class="right">
+            <button class="icon-btn" title="Hapus" onclick="window.deleteEntry('${r.id}')">🗑️</button>
+          </td>
+        `;
+        tbody.appendChild(tr);
+      });
+    }
+
+    
+
+    // compute totals per person and combined for the month
+    async function computeTotals(rows){
+      let totalIlham=0, totalAdel=0;
+      rows.forEach(r => {
+        if(r.name.toLowerCase().includes('ilham')) totalIlham += Number(r.amount||0);
+        else if(r.name.toLowerCase().includes('adel')) totalAdel += Number(r.amount||0);
+      });
+      // get profiles to show salary and saving (one-time read)
+      const profSnap = await getDocs(collection(db,'profiles'));
+      let salaryIl=0,salaryAd=0,savingIl=0,savingAd=0;
+      profSnap.forEach(d => {
+        if(d.id==='ilham'){ salaryIl = d.data().salary||0; savingIl = d.data().saving||0 }
+        if(d.id==='adel'){ salaryAd = d.data().salary||0; savingAd = d.data().saving||0 }
+      });
+
+      // render totals
+      const wrap = totalsWrap();
+      wrap.innerHTML = `
+        <div class="total-card">
+          <h3>Ilham — Gaji / Tabungan</h3>
+          <p>${fmt(salaryIl)} / Tabungan: ${fmt(savingIl)}</p>
+        </div>
+        <div class="total-card">
+          <h3>Adel — Gaji / Tabungan</h3>
+          <p>${fmt(salaryAd)} / Tabungan: ${fmt(savingAd)}</p>
+        </div>
+        <div class="total-card">
+          <h3>Total Pengeluaran Ilham (bulan)</h3>
+          <p>${fmt(totalIlham)}</p>
+        </div>
+        <div class="total-card">
+          <h3>Total Pengeluaran Adel (bulan)</h3>
+          <p>${fmt(totalAdel)}</p>
+        </div>
+        <div class="total-card">
+          <h3>Total Pengeluaran Bersama (bulan)</h3>
+          <p>${fmt(totalIlham + totalAdel)}</p>
+        </div>
+        <div class="total-card">
+          <h3>Total Tabungan Bersama (bulan)</h3>
+          <p>${fmt(savingIl + savingAd)}</p>
+        </div>
+      `;
+    }
+
+    // delete entry (exposed to window for onclick)
+    window.deleteEntry = async function(id){
+      if(!confirm('Hapus entri ini?')) return;
+      await deleteDoc(doc(db,'entries',id));
+    }
+
+    // initializers
+    window.addEventListener('load', async () => {
+      populateMonths();
+      // load profiles realtime
+      loadProfiles();
+      // refresh entries for selected month
+      refreshEntries();
+      // handlers
+      document.getElementById('monthSelect').addEventListener('change', refreshEntries);
+      document.getElementById('entryForm').addEventListener('submit', handleAddEntry);
+      document.getElementById('profileForm').addEventListener('submit', saveProfiles);
+      // expose utility to export CSV
+      document.getElementById('exportBtn').addEventListener('click', async ()=>{
+        // fetch current month rows synchronously
+        const sel = monthSelect().value;
+        const qSnap = await getDocs(query(collection(db,'entries'), orderBy('date','asc')));
+        const filtered = [];
+        qSnap.forEach(d => {
+          const data = d.data();
+          if(typeof data.date==='string' && data.date.startsWith(sel)) filtered.push({...data, id:d.id});
+        });
+        if(filtered.length===0){ alert('Tidak ada data untuk diekspor'); return; }
+        let csv = 'No,Hari,Tanggal,Nama,Amount,Note\n';
+        filtered.forEach((r,i)=>{
+          const dt = new Date(r.date);
+          const hari = dt.toLocaleDateString('id-ID',{weekday:'long'});
+          csv += `${i+1},"${hari}","${r.date}","${r.name}",${r.amount},"${(r.note||'')}"\n`;
+        });
+        const blob = new Blob([csv], {type:'text/csv'});
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a'); a.href = url; a.download = `entries-${sel}.csv`; a.click(); URL.revokeObjectURL(url);
+      });
+    });
+  </script>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <div class="brand"><div class="logo">IA</div>
+        <div>
+          <h1>Financial — Ilham & Adel</h1>
+          <p class="lead">Catatan pengeluaran harian, gaji & tabungan — tampil mulai bulan depan</p>
+        </div>
+      </div>
+      <div>
+        <div style="display:flex;gap:8px;align-items:center">
+          <select id="monthSelect" class="small"></select>
+          <button id="exportBtn" class="small">Export CSV</button>
+        </div>
+      </div>
+    </header>
+
+    <div class="grid">
+      <!-- left: table & input entry -->
+      <div>
+        <div class="card" style="margin-bottom:12px">
+          <form id="entryForm" class="row" autocomplete="off">
+            <input type="date" id="date" name="date" class="small-input" required />
+            <select id="name" name="name" class="name-select">
+              <option value="Ilham">Ilham</option>
+              <option value="Adel">Adel</option>
+            </select>
+            <input type="number" id="amount" name="amount" placeholder="Jumlah (Rp)" required />
+            <input type="text" id="note" name="note" placeholder="Keterangan (opsional)" />
+            <button type="submit" class="small">Tambah</button>
+          </form>
+          <div style="margin-top:10px" class="small-muted">Masukkan pengeluaran per hari. Tanggal default harus berada pada bulan yang dipilih (bulan depan default).</div>
+        </div>
+
+        <div class="card">
+          <table>
+            <thead>
+              <tr>
+                <th style="width:36px">No</th>
+                <th>Tanggal</th>
+                <th>Nama</th>
+                <th class="right">Jumlah</th>
+                <th>Keterangan</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody id="entriesBody">
+              <tr><td colspan="6" class="empty">Memuat data...</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- right: profile, totals -->
+      <aside>
+        <div class="card profile" style="margin-bottom:12px">
+          <form id="profileForm">
+            <div style="display:flex;justify-content:space-between;align-items:center">
+              <strong>Profil & Gaji</strong>
+              <span class="small-muted">Per orang / bulan</span>
+            </div>
+            <div class="row" style="margin-top:8px">
+              <label for="salaryIlham">Gaji Ilham (Rp)</label>
+              <input style="width: 100px;" class="small-input" id="salaryIlham" type="number" placeholder="Gaji Ilham (Rp)" />
+            </div>
+            <div class="row" style="margin-top:8px">
+              <label for="salaryAdel">Gaji Adel (Rp)</label>
+              <input style="width: 100px;" class="small-input" id="salaryAdel" type="number" placeholder="Gaji Adel (Rp)" />
+            </div>
+
+            <div class="row" style="margin-top:8px">
+              <label for="savingIlham">Tabungan Ilham (Rp)</label>
+              <input style="width: 100px;" class="small-input" id="savingIlham" type="number" placeholder="Tabungan Ilham (Rp)" />
+            </div>
+            <div class="row" style="margin-top:8px">
+              <label for="savingAdel">Tabungan Adel (Rp)</label>
+              <input style="width: 100px;" class="small-input" id="savingAdel" type="number" placeholder="Tabungan Adel (Rp)" />
+            </div>
+            <div style="display:flex;gap:8px;margin-top:8px">
+              <button type="submit">Simpan</button>
+              <button type="button" class="ghost" onclick="document.getElementById('profileForm').reset();">Reset</button>
+            </div>
+          </form>
+        </div>
+
+        <div id="totalsWrap" class="card totals">
+          <div class="total-card"><h3>Memuat…</h3></div>
+        </div>
+      </aside>
+    </div>
+
+    <footer class="muted">
+      Aku sayang kamu, Ilham & Adel ❤️<br>
+    </footer>
+  </div>
+
+  <!-- small helper to set default date to first day of selected month in form -->
+  <script>
+    // update date input to first day of selected month when month changes
+    const monthSel = document.getElementById('monthSelect');
+    monthSel?.addEventListener('change', ()=>{
+      const v = monthSel.value; // YYYY-MM
+      const dateInp = document.getElementById('date');
+      if(v && dateInp){
+        const parts = v.split('-');
+        dateInp.value = `${parts[0]}-${parts[1]}-01`;
+      }
+    });
+    // set default date on load after months populated
+    window.addEventListener('load', ()=> {
+      setTimeout(()=>{
+        const ms = document.getElementById('monthSelect');
+        if(ms && ms.value){
+          const parts = ms.value.split('-');
+          const dateInp = document.getElementById('date');
+          if(dateInp) dateInp.value = `${parts[0]}-${parts[1]}-01`;
+        }
+      }, 300);
+    });
+  </script>
+</body>
+</html>
