@@ -3,140 +3,322 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Financial Accounting — Ilham & Adel</title>
+  <title>Financial Couple — Ilham ❤️ Adel</title>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
   <style>
     :root{
-      --bg:#f7f8fb; --card:#fff; --accent:#FF6B5C; --muted:#6b7280;
-      --glass: rgba(255,255,255,0.85);
+      --pink:#ff4d6d;
+      --rose:#ffe0e6;
+      --blush:#ffd6e0;
+      --cream:#fff7f9;
+      --ink:#2a2a2a;
+      --muted:#6b6b6b;
+      --ring: 0 0 0 3px rgba(255,77,109,.25);
+      --radius:16px;
     }
     *{box-sizing:border-box}
-    body{font-family:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial; margin:0; background:linear-gradient(180deg,#f3f5f9 0%,var(--bg) 100%); color:#0f172a; padding:20px}
-    .wrap{max-width:1100px;margin:0 auto}
-    header{display:flex;gap:16px;align-items:center;justify-content:space-between;margin-bottom:18px}
-    .brand{display:flex;gap:12px;align-items:center}
-    .logo{width:46px;height:46px;border-radius:8px;background:var(--accent);display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700}
-    h1{font-size:18px;margin:0}
-    p.lead{margin:0;color:var(--muted);font-size:13px}
-
-    .grid{display:grid;grid-template-columns:1fr 320px;gap:18px;align-items:start}
-    @media(max-width:900px){.grid{grid-template-columns:1fr;}}
-    .card{background:var(--card);border-radius:12px;padding:14px;box-shadow:0 6px 18px rgba(15,23,42,0.06)}
-    .controls{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin-bottom:10px}
-    select,input[type="date"],input[type="text"],input[type="number"]{padding:8px 10px;border-radius:8px;border:1px solid #e6e9ef;background:#fff}
-    button{background:var(--accent);color:#fff;padding:8px 12px;border-radius:8px;border:0;cursor:pointer}
-    button.ghost{background:transparent;border:1px solid #e6e9ef;color:var(--muted)}
-    .small{font-size:13px;padding:6px 8px}
-
-    table{width:100%;border-collapse:collapse;font-size:14px}
-    thead th{font-weight:700;text-align:left;padding:10px 8px;border-bottom:1px solid #eef2f7;color:var(--muted)}
-    tbody td{padding:10px 8px;border-bottom:1px dashed #f1f5f9;vertical-align:middle}
-    .right{text-align:right}
-    .muted{color:var(--muted);font-size:13px}
-    .chip{display:inline-block;padding:6px 8px;border-radius:999px;background:#f1f5f9;font-weight:600;font-size:12px}
-
-    form.row{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
-    .row > *{flex:1}
-    .row .small-input{flex:0 0 120px}
-    .row .name-select{flex:0 0 110px}
-    .totals{display:flex;gap:10px;flex-wrap:wrap;margin-top:12px}
-    .total-card{flex:1;padding:10px;border-radius:10px;background:linear-gradient(180deg,#fff,#fbfdff);border:1px solid #f0f5f9}
-    .total-card h3{margin:0;font-size:13px;color:var(--muted)}
-    .total-card p{margin:6px 0 0;font-size:18px;font-weight:700;color:#0b1220}
-    .row label {min-width: 140px; font-size: 14px; color: var(--muted);}
-    .small-input {flex: 0 0 120px;}
-    .profile{display:flex;flex-direction:column;gap:8px}
-    .profile .row{display:flex;gap:8px}
-    .small-muted{font-size:12px;color:var(--muted)}
-
-    .actions {display:flex;gap:6px}
-    .icon-btn{background:transparent;border:0;padding:6px;border-radius:6px;cursor:pointer}
-    .danger{color:#e11d48}
-    footer{margin-top:18px;color:var(--muted);font-size:13px;text-align:center}
-    .empty{padding:20px;text-align:center;color:var(--muted)}
-
-    /* Tambahan untuk responsive */
-    @media (max-width: 768px) {
-      header {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 10px;
-      }
-
-      .grid {
-        grid-template-columns: 1fr;
-      }
-
-      form.row {
-        flex-direction: column;
-        align-items: stretch;
-      }
-
-      .row > * {
-        flex: 1 1 auto !important;
-        width: 100% !important;
-      }
-
-      .row label {
-        min-width: unset;
-      }
-
-      .small-input,
-      .name-select {
-        flex: 1 1 auto;
-        width: 100%;
-      }
-
-      /* Biar tabel bisa digeser di HP */
-      .card table {
-        display: block;
-        overflow-x: auto;
-        white-space: nowrap;
-      }
-
-      table thead, table tbody, table tr, table td, table th {
-        white-space: nowrap;
-      }
-
-      /* Total card agar tampil satu kolom */
-      .totals {
-        flex-direction: column;
-      }
-
-      .total-card {
-        width: 100%;
-      }
+    body{
+      margin:0;
+      font-family:Poppins,system-ui,-apple-system,Segoe UI,Roboto,Arial,Helvetica,sans-serif;
+      color:var(--ink);
+      background:
+        radial-gradient(1200px 800px at 110% -10%, #ffdce6 0%, transparent 60%),
+        radial-gradient(800px 600px at -10% 110%, #ffeef3 0%, transparent 55%),
+        linear-gradient(180deg, var(--cream), #ffffff 60%);
     }
-
-    @media (max-width: 480px) {
-      body {
-        padding: 10px;
-      }
-      h1 {
-        font-size: 16px;
-      }
-      p.lead {
-        font-size: 12px;
-      }
-      button.small {
-        font-size: 12px;
-        padding: 6px 8px;
-      }
+    header{
+      position:sticky; top:0; z-index:10;
+      backdrop-filter:saturate(1.2) blur(8px);
+      background-color:#ffffffaa;
+      border-bottom:1px solid #ffe3ea;
     }
-
+    .wrap{
+      max-width:1100px;
+      margin:0 auto;
+      padding:20px;
+    }
+    .brand{
+      display:flex; align-items:center; gap:14px;
+    }
+    .heart{
+      width:40px; height:40px; display:grid; place-items:center;
+      background: conic-gradient(from 180deg at 50% 50%, #ff7a92, #ff4d6d, #ff7a92);
+      -webkit-mask:
+        radial-gradient(12px at 30% 35%,#000 98%,#0000) top left,
+        radial-gradient(12px at 70% 35%,#000 98%,#0000) top right,
+        conic-gradient(from -45deg at 50% 65%, #000 90deg, #0000 0) bottom;
+      -webkit-mask-size:50% 50%;
+      -webkit-mask-repeat:no-repeat;
+      border-radius:12px;
+      box-shadow:0 10px 20px -10px #ff4d6d66, inset 0 0 0 2px #ffffff66;
+    }
+    h1{margin:0; font-size:20px}
+    .grid{
+      display:grid; gap:18px;
+      grid-template-columns: 1fr;
+    }
+    @media(min-width:780px){
+      .grid{grid-template-columns: 1.2fr 1fr;}
+    }
+    .card{
+      background:#fff;
+      border:1px solid #ffe3ea;
+      border-radius:var(--radius);
+      box-shadow:0 10px 30px -20px #ff4d6d55;
+    }
+    .card .head{
+      padding:16px 18px;
+      border-bottom:1px solid #ffe3ea;
+      background:linear-gradient(180deg,#fff,#fff7fa);
+      border-top-left-radius:var(--radius);
+      border-top-right-radius:var(--radius);
+      display:flex; justify-content:space-between; align-items:center;
+      gap:10px;
+    }
+    .card .body{padding:18px}
+    .totals{
+      display:grid; gap:12px;
+      grid-template-columns:1fr; 
+    }
+    @media(min-width:700px){
+      .totals{grid-template-columns: repeat(4,1fr);}
+    }
+    .pill{
+      padding:14px; border-radius:14px; background:var(--cream);
+      border:1px dashed #ffc1cf; min-height:84px;
+    }
+    .pill h3{margin:0 0 6px 0; font-size:13px; color:var(--muted); font-weight:600; letter-spacing:.3px}
+    .amount{font-size:20px; font-weight:700}
+    .sub{font-size:12px; color:var(--muted)}
+    form{
+      display:grid; gap:12px;
+    }
+    .row{display:grid; gap:12px; grid-template-columns:1fr}
+    @media(min-width:560px){
+      .row.two{grid-template-columns:1fr 1fr}
+      .row.three{grid-template-columns:1fr 1fr 1fr}
+      .row.four{grid-template-columns:repeat(4,1fr)}
+    }
+    label{font-size:12px; color:#7a7a7a}
+    input, select, button, textarea{
+      width:100%; padding:12px 12px; border-radius:12px;
+      border:1px solid #ffd1dc; background:#fff;
+      outline:none; font:inherit;
+    }
+    input:focus, select:focus, textarea:focus{box-shadow:var(--ring); border-color:#ff9bb0}
+    button{
+      cursor:pointer; border:0; background:var(--pink); color:#fff; font-weight:700;
+      transition:transform .05s ease, box-shadow .2s ease;
+      box-shadow:0 10px 20px -12px #ff4d6d88;
+    }
+    button:hover{transform:translateY(-1px)}
+    .muted-btn{background:#fff; color:var(--pink); border:1px solid #ffc1cf; box-shadow:none}
+    .stack{display:grid; gap:16px}
+    .list{display:grid; gap:10px; max-height:360px; overflow:auto; padding-right:6px}
+    .item{
+      display:grid; gap:10px;
+      grid-template-columns: auto 1fr auto;
+      align-items:center;
+      border:1px solid #ffe3ea; background:#fff; padding:10px 12px; border-radius:12px;
+    }
+    .badge{
+      padding:4px 8px; font-size:11px; border-radius:999px; border:1px solid #ffc1cf; background:#fff7fa;
+      color:#c2183e; font-weight:600; white-space:nowrap;
+    }
+    .small{font-size:12px; color:#767676}
+    .danger{color:#c2183e}
+    .sep{height:1px; background:#ffe3ea; margin:6px 0}
+    .footer-note{font-size:12px; color:#888; text-align:center; margin-top:18px}
+    .kiss{
+      display:inline-block; transform: rotate(-8deg);
+      background: #fff0f4; border:1px dashed #ffc1cf; padding:2px 8px; border-radius:10px;
+      font-weight:700; font-size:12px; color:#c2183e;
+    }
   </style>
-  <!-- Firebase v9 modular -->
+</head>
+<body>
+  <header>
+    <div class="wrap brand">
+      <div class="heart" aria-hidden="true"></div>
+      <div>
+        <h1>Financial Couple — Ilham <span aria-hidden="true">❤️</span> Adel</h1>
+        <div class="small">Kelola tabungan sendiri & bersama, urunan bulanan, dan pengeluaran harian.</div>
+      </div>
+    </div>
+  </header>
+
+  <main class="wrap" style="margin-top:12px">
+    <!-- TOTALS -->
+    <section class="card">
+      <div class="head">
+        <strong>Ringkasan Saldo</strong>
+        <span class="kiss">Teamwork makes love work ✨</span>
+      </div>
+      <div class="body">
+        <div class="totals">
+          <div class="pill">
+            <h3>Saldo Ilham (Masing-masing)</h3>
+            <div class="amount" id="ilhamBalance">Rp 0</div>
+            <div class="sub" id="ilhamInfo">Awal Rp 5.700.000 − urunan − belanja pribadi</div>
+          </div>
+          <div class="pill">
+            <h3>Saldo Adel (Masing-masing)</h3>
+            <div class="amount" id="adelBalance">Rp 0</div>
+            <div class="sub" id="adelInfo">Awal Rp 13.000.000 − urunan − belanja pribadi</div>
+          </div>
+          <div class="pill">
+            <h3>Tabungan Bersama</h3>
+            <div class="amount" id="sharedBalance">Rp 0</div>
+            <div class="sub" id="sharedInfo">Total urunan − pengeluaran dari bersama</div>
+          </div>
+          <div class="pill">
+            <h3>Total Aset Saat Ini</h3>
+            <div class="amount" id="grandTotal">Rp 0</div>
+            <div class="sub">Masing-masing + Bersama</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="grid" style="margin-top:18px">
+      <!-- LEFT COLUMN -->
+      <section class="stack">
+        <!-- URUNAN -->
+        <div class="card">
+          <div class="head">
+            <strong>Urunan Bulanan</strong>
+            <span class="small">Masuk ke <b>Tabungan Bersama</b></span>
+          </div>
+          <div class="body">
+            <form id="contribForm">
+              <div class="row three">
+                <div>
+                  <label for="contribPerson">Siapa</label>
+                  <select id="contribPerson" required>
+                    <option value="ilham">Ilham</option>
+                    <option value="adel">Adel</option>
+                  </select>
+                </div>
+                <div>
+                  <label for="contribMonth">Bulan (YYYY-MM)</label>
+                  <input id="contribMonth" type="month" required />
+                </div>
+                <div>
+                  <label for="contribAmount">Jumlah (Rp)</label>
+                  <input id="contribAmount" type="number" min="0" step="1000" placeholder="700000" required/>
+                </div>
+              </div>
+              <div class="row two">
+                <button type="submit">+ Tambah Urunan</button>
+                <button type="button" id="resetMonth" class="muted-btn">Bulan Ini</button>
+              </div>
+            </form>
+            <div class="sep"></div>
+            <div class="list" id="contribList"></div>
+          </div>
+        </div>
+
+        <!-- PENGELUARAN -->
+        <div class="card">
+          <div class="head">
+            <strong>Pengeluaran Harian</strong>
+            <span class="small">Pilih sumber dana: <b>Masing-masing</b> / <b>Bersama</b></span>
+          </div>
+          <div class="body">
+            <form id="expenseForm">
+              <div class="row four">
+                <div>
+                  <label for="expPerson">Siapa</label>
+                  <select id="expPerson" required>
+                    <option value="ilham">Ilham</option>
+                    <option value="adel">Adel</option>
+                  </select>
+                </div>
+                <div>
+                  <label for="expSource">Sumber Dana</label>
+                  <select id="expSource" required>
+                    <option value="individual">Masing-masing</option>
+                    <option value="shared">Bersama</option>
+                  </select>
+                </div>
+                <div>
+                  <label for="expAmount">Jumlah (Rp)</label>
+                  <input id="expAmount" type="number" min="0" step="1000" placeholder="120000" required/>
+                </div>
+                <div>
+                  <label for="expDate">Tanggal</label>
+                  <input id="expDate" type="date" required/>
+                </div>
+              </div>
+              <div>
+                <label for="expNote">Catatan (opsional)</label>
+                <input id="expNote" type="text" placeholder="contoh: kopi berdua, kebutuhan dapur, dll"/>
+              </div>
+              <div class="row two">
+                <button type="submit">+ Catat Pengeluaran</button>
+                <button type="button" id="todayBtn" class="muted-btn">Tanggal Hari Ini</button>
+              </div>
+            </form>
+            <div class="sep"></div>
+            <div class="list" id="expenseList"></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- RIGHT COLUMN -->
+      <section class="stack">
+        <!-- PENGATURAN SALDO AWAL -->
+        <div class="card">
+          <div class="head">
+            <strong>Saldo Awal Masing-masing</strong>
+            <span class="small">Tersimpan di Firestore</span>
+          </div>
+          <div class="body">
+            <form id="initialForm">
+              <div class="row two">
+                <div>
+                  <label for="initIlham">Ilham (Rp)</label>
+                  <input id="initIlham" type="number" step="1000" min="0" required value="5700000"/>
+                </div>
+                <div>
+                  <label for="initAdel">Adel (Rp)</label>
+                  <input id="initAdel" type="number" step="1000" min="0" required value="13000000"/>
+                </div>
+              </div>
+              <div class="row two">
+                <button type="submit">Simpan / Perbarui</button>
+                <button type="button" id="resetInit" class="muted-btn">Kembalikan Default</button>
+              </div>
+              <div class="footer-note">Default: Ilham Rp 5.700.000 &middot; Adel Rp 13.000.000</div>
+            </form>
+          </div>
+        </div>
+
+        <!-- RIWAYAT CEPAT -->
+        <div class="card">
+          <div class="head">
+            <strong>Riwayat Terbaru</strong>
+            <span class="small">Klik 🗑️ untuk menghapus</span>
+          </div>
+          <div class="body">
+            <div class="list" id="recentList"></div>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <div class="footer-note">Made with <span aria-hidden="true">💗</span> by Ilham & Adel — transparan, rapi, romantis.</div>
+  </main>
+
   <script type="module">
-    // ===== FIREBASE SETUP =====
-    // 1) Buat project di https://console.firebase.google.com/
-    // 2) Aktifkan Firestore (Mode: test untuk pengembangan)
-    // 3) Tambah Web App, copy config di bawah dan ganti placeholder
     import { initializeApp } from "https://www.gstatic.com/firebasejs/10.11.0/firebase-app.js";
     import {
       getFirestore, collection, addDoc, getDocs, query, where,
       orderBy, onSnapshot, serverTimestamp, setDoc, doc, updateDoc, deleteDoc
     } from "https://www.gstatic.com/firebasejs/10.11.0/firebase-firestore.js";
 
-    // TODO: REPLACE WITH YOUR FIREBASE CONFIG (from Firebase console -> Project settings -> SDK setup)
+    // === FIREBASE CONFIG (dari Anda) ===
     const firebaseConfig = {
       apiKey: "AIzaSyCX2a-f1UK7iVC-TlmE2iekJMwIs5ccDQU",
       authDomain: "financial-couple-dc3cf.firebaseapp.com",
@@ -147,368 +329,312 @@
       measurementId: "G-CJ8VGQGPK0"
     };
 
+    // === INIT ===
     const app = initializeApp(firebaseConfig);
-    const db = getFirestore(app);
+    const db  = getFirestore(app);
 
-    // ===== APP LOGIC =====
-    const monthSelect = () => document.getElementById('monthSelect');
-    const tableBody = () => document.getElementById('entriesBody');
-    const addForm = () => document.getElementById('entryForm');
-    const profileIlhamInput = () => document.getElementById('salaryIlham');
-    const profileAdelInput = () => document.getElementById('salaryAdel');
-    const savingIlhamInput = () => document.getElementById('savingIlham');
-    const savingAdelInput = () => document.getElementById('savingAdel');
-    const totalsWrap = () => document.getElementById('totalsWrap');
+    // === DOM ===
+    const ilhamBalanceEl  = document.getElementById('ilhamBalance');
+    const adelBalanceEl   = document.getElementById('adelBalance');
+    const sharedBalanceEl = document.getElementById('sharedBalance');
+    const grandTotalEl    = document.getElementById('grandTotal');
 
-    // helper untuk format rupiah
-    function fmt(x){ return (typeof x!=='number')? x : x.toLocaleString('id-ID', { style:'currency', currency:'IDR', maximumFractionDigits:0 }) }
+    const contribForm  = document.getElementById('contribForm');
+    const contribPerson = document.getElementById('contribPerson');
+    const contribMonth  = document.getElementById('contribMonth');
+    const contribAmount = document.getElementById('contribAmount');
+    const contribList   = document.getElementById('contribList');
+    const resetMonthBtn = document.getElementById('resetMonth');
 
-    // compute next month default
-    function getNextMonthKey(){
-      const now = new Date();
-      const y = now.getFullYear();
-      const m = now.getMonth() + 1; // next month index (0-based + 1)
-      const dt = new Date(y, m, 1); // 1st of next month
-      return `${dt.getFullYear()}-${String(dt.getMonth()+1).padStart(2,'0')}`;
+    const expenseForm  = document.getElementById('expenseForm');
+    const expPerson    = document.getElementById('expPerson');
+    const expSource    = document.getElementById('expSource');
+    const expAmount    = document.getElementById('expAmount');
+    const expDate      = document.getElementById('expDate');
+    const expNote      = document.getElementById('expNote');
+    const expenseList  = document.getElementById('expenseList');
+
+    const initialForm  = document.getElementById('initialForm');
+    const initIlham    = document.getElementById('initIlham');
+    const initAdel     = document.getElementById('initAdel');
+    const resetInitBtn = document.getElementById('resetInit');
+
+    const recentList   = document.getElementById('recentList');
+
+    // === UTIL ===
+    const fmt = n => new Intl.NumberFormat('id-ID',{style:'currency',currency:'IDR',maximumFractionDigits:0}).format(n||0);
+    const todayStr = () => {
+      const d = new Date();
+      const y = d.getFullYear();
+      const m = String(d.getMonth()+1).padStart(2,'0');
+      const t = String(d.getDate()).padStart(2,'0');
+      return `${y}-${m}-${t}`;
+    }
+    const monthStr = () => {
+      const d = new Date();
+      const y = d.getFullYear();
+      const m = String(d.getMonth()+1).padStart(2,'0');
+      return `${y}-${m}`;
     }
 
-    // populate month select (6 months window)
-    function populateMonths(){
-      const sel = monthSelect();
-      sel.innerHTML = '';
-      const base = new Date();
-      // start from next month
-      base.setMonth(base.getMonth()+1,1);
-      for(let i=0;i<12;i++){
-        const d = new Date(base.getFullYear(), base.getMonth()+i, 1);
-        const key = `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}`;
-        const label = d.toLocaleString('id-ID',{month:'long', year:'numeric'});
-        const opt = document.createElement('option');
-        opt.value = key; opt.textContent = label;
-        sel.appendChild(opt);
+    // === DEFAULT SALDO AWAL ===
+    const DEFAULT_ILHAM = 5_700_000;
+    const DEFAULT_ADEL  = 13_000_000;
+
+    // Ensure meta/initialBalances exists
+    const metaDocRef = doc(db, 'meta', 'initialBalances');
+    async function bootstrapInitialBalances(){
+      const snap = await getDocs(query(collection(db,'meta')));
+      const existDoc = snap.docs.find(d => d.id === 'initialBalances');
+      if(!existDoc){
+        await setDoc(metaDocRef, {
+          ilham: DEFAULT_ILHAM,
+          adel: DEFAULT_ADEL,
+          createdAt: serverTimestamp(),
+          updatedAt: serverTimestamp()
+        });
       }
-      sel.value = getNextMonthKey();
+    }
+    bootstrapInitialBalances().catch(console.error);
+
+    // === LISTENERS ===
+    let state = {
+      ilhamInit: DEFAULT_ILHAM,
+      adelInit: DEFAULT_ADEL,
+      contribs: [],  // {id, person, amount, month, createdAt}
+      expenses: []   // {id, person, amount, source, date, note, createdAt}
+    };
+
+    // meta/initialBalances
+    onSnapshot(metaDocRef, (snap)=>{
+      if(snap.exists()){
+        const data = snap.data();
+        state.ilhamInit = Number(data.ilham)||0;
+        state.adelInit  = Number(data.adel)||0;
+        initIlham.value = state.ilhamInit;
+        initAdel.value  = state.adelInit;
+        renderTotals();
+      }
+    });
+
+    // contributions
+    onSnapshot(query(collection(db,'contributions'), orderBy('createdAt','desc')), (qs)=>{
+      state.contribs = qs.docs.map(d=>({id:d.id, ...d.data()}));
+      renderContribs();
+      renderTotals();
+      renderRecents();
+    });
+
+    // expenses
+    onSnapshot(query(collection(db,'expenses'), orderBy('createdAt','desc')), (qs)=>{
+      state.expenses = qs.docs.map(d=>({id:d.id, ...d.data()}));
+      renderExpenses();
+      renderTotals();
+      renderRecents();
+    });
+
+    // === RENDER ===
+    function calcTotals(){
+      const ilhamUrunan = sum(state.contribs.filter(c=>c.person==='ilham').map(c=>+c.amount||0));
+      const adelUrunan  = sum(state.contribs.filter(c=>c.person==='adel').map(c=>+c.amount||0));
+      const totalUrunan = ilhamUrunan + adelUrunan;
+
+      const ilhamPribadiOut = sum(state.expenses.filter(e=>e.person==='ilham' && e.source==='individual').map(e=>+e.amount||0));
+      const adelPribadiOut  = sum(state.expenses.filter(e=>e.person==='adel'  && e.source==='individual').map(e=>+e.amount||0));
+      const sharedOut       = sum(state.expenses.filter(e=>e.source==='shared').map(e=>+e.amount||0));
+
+      const ilhamSaldo = (state.ilhamInit - ilhamUrunan - ilhamPribadiOut);
+      const adelSaldo  = (state.adelInit  - adelUrunan  - adelPribadiOut);
+      const sharedSaldo = totalUrunan - sharedOut;
+
+      const grand = ilhamSaldo + adelSaldo + sharedSaldo;
+
+      return {
+        ilhamSaldo, adelSaldo, sharedSaldo, grand,
+        ilhamUrunan, adelUrunan, totalUrunan,
+        ilhamPribadiOut, adelPribadiOut, sharedOut
+      };
     }
 
-    // listen to changes and refresh
-    let unsubscribeEntries = null;
+    function renderTotals(){
+      const t = calcTotals();
+      ilhamBalanceEl.textContent  = fmt(t.ilhamSaldo);
+      adelBalanceEl.textContent   = fmt(t.adelSaldo);
+      sharedBalanceEl.textContent = fmt(t.sharedSaldo);
+      grandTotalEl.textContent    = fmt(t.grand);
 
-    async function loadProfiles(){
-      // profiles stored as doc ids: "ilham" and "adel"
-      const ilhamDoc = doc(db, 'profiles', 'ilham');
-      const adelDoc = doc(db, 'profiles', 'adel');
-      // try fetch
-      try {
-        const snapIlham = await getDocs(query(collection(db,'profiles')));
-        // show if exists, else set defaults
-      } catch(e){}
-      // try read individually using getDocs not necessary; we'll read using onSnapshot for UI reactive
-      // We'll use onSnapshot on profiles collection for reactive updates
-      const profilesCol = collection(db,'profiles');
-      onSnapshot(profilesCol, snap => {
-        let il=0,ad=0,sil=0,sad=0;
-        snap.docs.forEach(d => {
-          const id = d.id.toLowerCase();
-          const data = d.data();
-          if(id==='ilham'){ il = data.salary||0; sil = data.saving||0 }
-          if(id==='adel'){ ad = data.salary||0; sad = data.saving||0 }
-        });
-        profileIlhamInput().value = il;
-        profileAdelInput().value = ad;
-        savingIlhamInput().value = sil;
-        savingAdelInput().value = sad;
-        refreshEntries(); // recalc totals whenever profile changes
-      });
+      document.getElementById('ilhamInfo').innerHTML =
+        `Awal ${fmt(state.ilhamInit)} − urunan ${fmt(t.ilhamUrunan)} − belanja pribadi ${fmt(t.ilhamPribadiOut)}`;
+      document.getElementById('adelInfo').innerHTML =
+        `Awal ${fmt(state.adelInit)} − urunan ${fmt(t.adelUrunan)} − belanja pribadi ${fmt(t.adelPribadiOut)}`;
+      document.getElementById('sharedInfo').innerHTML =
+        `Total urunan ${fmt(t.totalUrunan)} − pengeluaran bersama ${fmt(t.sharedOut)}`;
     }
 
-    // save profile
-    async function saveProfiles(ev){
-      ev?.preventDefault();
-      const il = Number(profileIlhamInput().value)||0;
-      const ad = Number(profileAdelInput().value)||0;
-      const sil = Number(savingIlhamInput().value)||0;
-      const sad = Number(savingAdelInput().value)||0;
-      await setDoc(doc(db,'profiles','ilham'), { salary: il, saving: sil });
-      await setDoc(doc(db,'profiles','adel'), { salary: ad, saving: sad });
-      alert('Profil berhasil disimpan');
-    }
-
-    // add entry handler
-    async function handleAddEntry(ev){
-      ev.preventDefault();
-      const f = addForm();
-      const date = f.date.value;
-      const name = f.name.value;
-      const amount = Number(f.amount.value) || 0;
-      const note = f.note.value || '';
-      if(!date || !name || amount<=0){ alert('Isi tanggal, nama, dan jumlah (lebih dari 0)'); return; }
-      // create document: fields: dateISO, name, amount, note, createdAt
-      await addDoc(collection(db,'entries'), {
-        date: date,
-        name: name,
-        amount: amount,
-        note: note,
-        createdAt: serverTimestamp()
-      });
-      f.reset();
-    }
-
-    // load entries for selected month and bind realtime
-    function refreshEntries(){
-      const sel = monthSelect().value; // "YYYY-MM"
-      if(unsubscribeEntries) unsubscribeEntries();
-      // query entries where date starts with sel (we store date in YYYY-MM-DD)
-      const q = query(collection(db,'entries'), orderBy('date','asc'));
-      unsubscribeEntries = onSnapshot(q, snap => {
-        const rows = [];
-        snap.docs.forEach(docSnap => {
-          const d = docSnap.data();
-          if(typeof d.date==='string' && d.date.startsWith(sel)){
-            rows.push({ id: docSnap.id, ...d });
-          }
-        });
-        renderTable(rows);
-        computeTotals(rows);
-      });
-    }
-
-    // render table rows
-    function renderTable(rows){
-      const tbody = tableBody();
-      tbody.innerHTML = '';
-      if(rows.length===0){
-        tbody.innerHTML = '<tr><td colspan="6" class="empty">Belum ada pengeluaran untuk bulan ini.</td></tr>';
+    function renderContribs(){
+      if(state.contribs.length===0){
+        contribList.innerHTML = `<div class="small">Belum ada urunan. Yuk mulai isi untuk bulan ini 💞</div>`;
         return;
       }
-      rows.forEach((r, idx) => {
-        const dt = new Date(r.date);
-        const hari = dt.toLocaleDateString('id-ID',{weekday:'long'}).toUpperCase();
-        const tr = document.createElement('tr');
-        tr.innerHTML = `
-          <td style="width:36px">${idx+1}</td>
-          <td style="width:130px">${hari}<div class="small-muted" style="font-weight:600">${r.date}</div></td>
-          <td style="width:120px">${r.name}</td>
-          <td class="right">${fmt(r.amount)}</td>
-          <td>${r.note || ''}</td>
-          <td style="width:80px" class="right">
-            <button class="icon-btn" title="Hapus" onclick="window.deleteEntry('${r.id}')">🗑️</button>
-          </td>
+      contribList.innerHTML = state.contribs.map(c=>{
+        const who = c.person==='ilham' ? 'Ilham' : 'Adel';
+        const time = c.createdAt?.toDate ? c.createdAt.toDate() : null;
+        const when = time ? time.toLocaleString('id-ID') : '';
+        return `
+          <div class="item">
+            <span class="badge">Urunan</span>
+            <div>
+              <div><strong>${who}</strong> — ${fmt(c.amount)} <span class="small">(${c.month})</span></div>
+              <div class="small">${when}</div>
+            </div>
+            <button class="muted-btn" onclick="window._delContrib('${c.id}')" title="hapus">🗑️</button>
+          </div>
         `;
-        tbody.appendChild(tr);
-      });
+      }).join('');
     }
 
-    
-
-    // compute totals per person and combined for the month
-    async function computeTotals(rows){
-      let totalIlham=0, totalAdel=0;
-      rows.forEach(r => {
-        if(r.name.toLowerCase().includes('ilham')) totalIlham += Number(r.amount||0);
-        else if(r.name.toLowerCase().includes('adel')) totalAdel += Number(r.amount||0);
-      });
-      // get profiles to show salary and saving (one-time read)
-      const profSnap = await getDocs(collection(db,'profiles'));
-      let salaryIl=0,salaryAd=0,savingIl=0,savingAd=0;
-      profSnap.forEach(d => {
-        if(d.id==='ilham'){ salaryIl = d.data().salary||0; savingIl = d.data().saving||0 }
-        if(d.id==='adel'){ salaryAd = d.data().salary||0; savingAd = d.data().saving||0 }
-      });
-
-      // render totals
-      const wrap = totalsWrap();
-      wrap.innerHTML = `
-        <div class="total-card">
-          <h3>Ilham — Gaji / Tabungan</h3>
-          <p>${fmt(salaryIl)} / Tabungan: ${fmt(savingIl)}</p>
-        </div>
-        <div class="total-card">
-          <h3>Adel — Gaji / Tabungan</h3>
-          <p>${fmt(salaryAd)} / Tabungan: ${fmt(savingAd)}</p>
-        </div>
-        <div class="total-card">
-          <h3>Total Pengeluaran Ilham (bulan)</h3>
-          <p>${fmt(totalIlham)}</p>
-        </div>
-        <div class="total-card">
-          <h3>Total Pengeluaran Adel (bulan)</h3>
-          <p>${fmt(totalAdel)}</p>
-        </div>
-        <div class="total-card">
-          <h3>Total Pengeluaran Bersama (bulan)</h3>
-          <p>${fmt(totalIlham + totalAdel)}</p>
-        </div>
-        <div class="total-card">
-          <h3>Total Tabungan Bersama (bulan)</h3>
-          <p>${fmt(savingIl + savingAd)}</p>
-        </div>
-        <div class="total-card">
-          <h3>Total Tabungan Bersama yang Sudah di Jumlah (bulan)</h3>
-          <p>${fmt((savingIl + savingAd) - (totalIlham + totalAdel))}</p>
-        </div>
-      `;
-    }
-
-    // delete entry (exposed to window for onclick)
-    window.deleteEntry = async function(id){
-      if(!confirm('Hapus entri ini?')) return;
-      await deleteDoc(doc(db,'entries',id));
-    }
-
-    // initializers
-    window.addEventListener('load', async () => {
-      populateMonths();
-      // load profiles realtime
-      loadProfiles();
-      // refresh entries for selected month
-      refreshEntries();
-      // handlers
-      document.getElementById('monthSelect').addEventListener('change', refreshEntries);
-      document.getElementById('entryForm').addEventListener('submit', handleAddEntry);
-      document.getElementById('profileForm').addEventListener('submit', saveProfiles);
-      // expose utility to export CSV
-      document.getElementById('exportBtn').addEventListener('click', async ()=>{
-        // fetch current month rows synchronously
-        const sel = monthSelect().value;
-        const qSnap = await getDocs(query(collection(db,'entries'), orderBy('date','asc')));
-        const filtered = [];
-        qSnap.forEach(d => {
-          const data = d.data();
-          if(typeof data.date==='string' && data.date.startsWith(sel)) filtered.push({...data, id:d.id});
-        });
-        if(filtered.length===0){ alert('Tidak ada data untuk diekspor'); return; }
-        let csv = 'No,Hari,Tanggal,Nama,Amount,Note\n';
-        filtered.forEach((r,i)=>{
-          const dt = new Date(r.date);
-          const hari = dt.toLocaleDateString('id-ID',{weekday:'long'});
-          csv += `${i+1},"${hari}","${r.date}","${r.name}",${r.amount},"${(r.note||'')}"\n`;
-        });
-        const blob = new Blob([csv], {type:'text/csv'});
-        const url = URL.createObjectURL(blob);
-        const a = document.createElement('a'); a.href = url; a.download = `entries-${sel}.csv`; a.click(); URL.revokeObjectURL(url);
-      });
-    });
-  </script>
-</head>
-<body>
-  <div class="wrap">
-    <header>
-      <div class="brand"><div class="logo">IA</div>
-        <div>
-          <h1>Financial — Ilham & Adel</h1>
-          <p class="lead">Catatan pengeluaran harian, gaji & tabungan</p>
-        </div>
-      </div>
-      <div>
-        <div style="display:flex;gap:8px;align-items:center">
-          <select id="monthSelect" class="small"></select>
-          <button id="exportBtn" class="small">Export CSV</button>
-        </div>
-      </div>
-    </header>
-
-    <div class="grid">
-      <!-- left: table & input entry -->
-      <div>
-        <div class="card" style="margin-bottom:12px">
-          <form id="entryForm" class="row" autocomplete="off">
-            <input type="date" id="date" name="date" class="small-input" required />
-            <select id="name" name="name" class="name-select">
-              <option value="Ilham">Ilham</option>
-              <option value="Adel">Adel</option>
-            </select>
-            <input type="number" id="amount" name="amount" placeholder="Jumlah (Rp)" required />
-            <input type="text" id="note" name="note" placeholder="Keterangan (opsional)" />
-            <button type="submit" class="small">Tambah</button>
-          </form>
-          <div style="margin-top:10px" class="small-muted">Masukkan pengeluaran per hari. Tanggal default harus berada pada bulan yang dipilih (bulan depan default).</div>
-        </div>
-
-        <div class="card">
-          <table>
-            <thead>
-              <tr>
-                <th style="width:36px">No</th>
-                <th>Tanggal</th>
-                <th>Nama</th>
-                <th class="right">Jumlah</th>
-                <th>Keterangan</th>
-                <th></th>
-              </tr>
-            </thead>
-            <tbody id="entriesBody">
-              <tr><td colspan="6" class="empty">Memuat data...</td></tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
-
-      <!-- right: profile, totals -->
-      <aside>
-        <div class="card profile" style="margin-bottom:12px">
-          <form id="profileForm">
-            <div style="display:flex;justify-content:space-between;align-items:center">
-              <strong>Profil & Gaji</strong>
-              <span class="small-muted">Per orang / bulan</span>
-            </div>
-            <div class="row" style="margin-top:8px">
-              <label for="salaryIlham">Gaji Ilham (Rp)</label>
-              <input style="width: 100px;" class="small-input" id="salaryIlham" type="number" placeholder="Gaji Ilham (Rp)" />
-            </div>
-            <div class="row" style="margin-top:8px">
-              <label for="salaryAdel">Gaji Adel (Rp)</label>
-              <input style="width: 100px;" class="small-input" id="salaryAdel" type="number" placeholder="Gaji Adel (Rp)" />
-            </div>
-
-            <div class="row" style="margin-top:8px">
-              <label for="savingIlham">Tabungan Ilham (Rp)</label>
-              <input style="width: 100px;" class="small-input" id="savingIlham" type="number" placeholder="Tabungan Ilham (Rp)" />
-            </div>
-            <div class="row" style="margin-top:8px">
-              <label for="savingAdel">Tabungan Adel (Rp)</label>
-              <input style="width: 100px;" class="small-input" id="savingAdel" type="number" placeholder="Tabungan Adel (Rp)" />
-            </div>
-            <div style="display:flex;gap:8px;margin-top:8px">
-              <button type="submit">Simpan</button>
-              <button type="button" class="ghost" onclick="document.getElementById('profileForm').reset();">Reset</button>
-            </div>
-          </form>
-        </div>
-
-        <div id="totalsWrap" class="card totals">
-          <div class="total-card"><h3>Memuat…</h3></div>
-        </div>
-      </aside>
-    </div>
-
-    <footer class="muted">
-      Aku sayang kamu, Ilham & Adel ❤️<br>
-    </footer>
-  </div>
-
-  <!-- small helper to set default date to first day of selected month in form -->
-  <script>
-    // update date input to first day of selected month when month changes
-    const monthSel = document.getElementById('monthSelect');
-    monthSel?.addEventListener('change', ()=>{
-      const v = monthSel.value; // YYYY-MM
-      const dateInp = document.getElementById('date');
-      if(v && dateInp){
-        const parts = v.split('-');
-        dateInp.value = `${parts[0]}-${parts[1]}-01`;
+    function renderExpenses(){
+      if(state.expenses.length===0){
+        expenseList.innerHTML = `<div class="small">Belum ada pengeluaran. Keep saving, lovebirds! 🕊️</div>`;
+        return;
       }
-    });
-    // set default date on load after months populated
-    window.addEventListener('load', ()=> {
-      setTimeout(()=>{
-        const ms = document.getElementById('monthSelect');
-        if(ms && ms.value){
-          const parts = ms.value.split('-');
-          const dateInp = document.getElementById('date');
-          if(dateInp) dateInp.value = `${parts[0]}-${parts[1]}-01`;
+      expenseList.innerHTML = state.expenses.map(e=>{
+        const who = e.person==='ilham' ? 'Ilham' : 'Adel';
+        const src = e.source==='shared' ? 'Bersama' : 'Masing-masing';
+        const time = e.createdAt?.toDate ? e.createdAt.toDate() : null;
+        const when = time ? time.toLocaleString('id-ID') : '';
+        const note = e.note ? `<div class="small">Catatan: ${escapeHtml(e.note)}</div>` : '';
+        return `
+          <div class="item">
+            <span class="badge">${src}</span>
+            <div>
+              <div><strong>${who}</strong> — ${fmt(e.amount)} <span class="small">(${e.date})</span></div>
+              ${note}
+              <div class="small">${when}</div>
+            </div>
+            <button class="muted-btn" onclick="window._delExpense('${e.id}')" title="hapus">🗑️</button>
+          </div>
+        `;
+      }).join('');
+    }
+
+    function renderRecents(){
+      // gabungkan & sort createdAt desc, batasi 12 terbaru
+      const toRow = (type, o) => {
+        const time = o.createdAt?.toDate ? o.createdAt.toDate() : null;
+        const when = time ? time.toLocaleString('id-ID') : '';
+        if(type==='contrib'){
+          const who = o.person==='ilham'?'Ilham':'Adel';
+          return {when, html: `
+            <div class="item">
+              <span class="badge">Urunan</span>
+              <div><strong>${who}</strong> — ${fmt(o.amount)} <span class="small">(${o.month})</span><div class="small">${when}</div></div>
+              <button class="muted-btn" onclick="window._delContrib('${o.id}')">🗑️</button>
+            </div>`};
+        }else{
+          const who = o.person==='ilham'?'Ilham':'Adel';
+          const src = o.source==='shared'?'Bersama':'Masing-masing';
+          return {when, html: `
+            <div class="item">
+              <span class="badge">${src}</span>
+              <div><strong>${who}</strong> — ${fmt(o.amount)} <span class="small">(${o.date})</span>${o.note?`<div class="small">Catatan: ${escapeHtml(o.note)}</div>`:''}<div class="small">${when}</div></div>
+              <button class="muted-btn" onclick="window._delExpense('${o.id}')">🗑️</button>
+            </div>`};
         }
-      }, 300);
+      };
+
+      const rows = [
+        ...state.contribs.map(c=>({type:'contrib', ...toRow('contrib', c)})),
+        ...state.expenses.map(e=>({type:'expense', ...toRow('expense', e)})),
+      ].sort((a,b)=>new Date(b.when)-new Date(a.when)).slice(0,12);
+
+      if(rows.length===0){
+        recentList.innerHTML = `<div class="small">Belum ada aktivitas.</div>`;
+        return;
+      }
+      recentList.innerHTML = rows.map(r=>r.html).join('');
+    }
+
+    function sum(arr){ return arr.reduce((a,b)=>a+(+b||0),0); }
+    function escapeHtml(s=''){
+      return s.replace(/[&<>"']/g, m=>({ '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;' }[m]));
+    }
+
+    // === ACTIONS ===
+    // Urunan submit
+    contribForm.addEventListener('submit', async (e)=>{
+      e.preventDefault();
+      const person = contribPerson.value;
+      const month  = contribMonth.value;
+      const amount = +contribAmount.value;
+      if(!person || !month || !(amount>0)) return alert('Lengkapi data urunan dengan benar ya 💕');
+
+      await addDoc(collection(db,'contributions'), {
+        person, month, amount,
+        createdAt: serverTimestamp()
+      });
+      contribAmount.value = '';
     });
+
+    // Expense submit
+    expenseForm.addEventListener('submit', async (e)=>{
+      e.preventDefault();
+      const person = expPerson.value;
+      const source = expSource.value; // 'individual' | 'shared'
+      const amount = +expAmount.value;
+      const date   = expDate.value;
+      const note   = expNote.value?.trim() || '';
+      if(!person || !source || !(amount>0) || !date) return alert('Lengkapi data pengeluaran dengan benar ya 💗');
+
+      // Optional guard: prevent minus shared balance
+      const t = calcTotals();
+      if(source==='shared' && amount > t.sharedSaldo){
+        const ok = confirm('Jumlah melebihi Tabungan Bersama saat ini. Tetap catat?');
+        if(!ok) return;
+      }
+
+      await addDoc(collection(db,'expenses'), {
+        person, source, amount, date, note,
+        createdAt: serverTimestamp()
+      });
+      expAmount.value=''; expNote.value='';
+    });
+
+    // Delete helpers
+    window._delContrib = async (id)=>{
+      const ok = confirm('Hapus entri urunan ini?');
+      if(ok) await deleteDoc(doc(db,'contributions', id));
+    };
+    window._delExpense = async (id)=>{
+      const ok = confirm('Hapus entri pengeluaran ini?');
+      if(ok) await deleteDoc(doc(db,'expenses', id));
+    };
+
+    // Initial form save
+    initialForm.addEventListener('submit', async (e)=>{
+      e.preventDefault();
+      const il = +initIlham.value||0;
+      const ad = +initAdel.value||0;
+      await setDoc(metaDocRef, { ilham: il, adel: ad, updatedAt: serverTimestamp() }, { merge:true });
+      alert('Saldo awal disimpan 💞');
+    });
+
+    // Helpers (buttons)
+    resetMonthBtn.addEventListener('click', ()=>{
+      contribMonth.value = monthStr();
+    });
+    document.getElementById('todayBtn').addEventListener('click', ()=>{
+      expDate.value = todayStr();
+    });
+    resetInitBtn.addEventListener('click', ()=>{
+      initIlham.value = DEFAULT_ILHAM;
+      initAdel.value  = DEFAULT_ADEL;
+    });
+
+    // Prefill defaults on UI
+    contribMonth.value = monthStr();
+    expDate.value = todayStr();
+
   </script>
 </body>
 </html>
