@@ -342,6 +342,10 @@
           <h3>Total Tabungan Bersama (bulan)</h3>
           <p>${fmt(savingIl + savingAd)}</p>
         </div>
+        <div class="total-card">
+          <h3>Total Tabungan Bersama yang Sudah di Jumlah (bulan)</h3>
+          <p>${fmt((savingIl + savingAd) - (totalIlham + totalAdel))}</p>
+        </div>
       `;
     }
 
