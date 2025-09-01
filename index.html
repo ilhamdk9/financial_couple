@@ -4,321 +4,123 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Financial Couple — Ilham ❤️ Adel</title>
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
   <style>
     :root{
-      --pink:#ff4d6d;
-      --rose:#ffe0e6;
-      --blush:#ffd6e0;
-      --cream:#fff7f9;
-      --ink:#2a2a2a;
-      --muted:#6b6b6b;
-      --ring: 0 0 0 3px rgba(255,77,109,.25);
-      --radius:16px;
+      --pink:#ff4d6d;--rose:#ffe0e6;--cream:#fff7f9;--ink:#2a2a2a;
+      --muted:#6b6b6b;--radius:16px;
     }
     *{box-sizing:border-box}
-    body{
-      margin:0;
-      font-family:Poppins,system-ui,-apple-system,Segoe UI,Roboto,Arial,Helvetica,sans-serif;
-      color:var(--ink);
-      background:
-        radial-gradient(1200px 800px at 110% -10%, #ffdce6 0%, transparent 60%),
-        radial-gradient(800px 600px at -10% 110%, #ffeef3 0%, transparent 55%),
-        linear-gradient(180deg, var(--cream), #ffffff 60%);
-    }
-    header{
-      position:sticky; top:0; z-index:10;
-      backdrop-filter:saturate(1.2) blur(8px);
-      background-color:#ffffffaa;
-      border-bottom:1px solid #ffe3ea;
-    }
-    .wrap{
-      max-width:1100px;
-      margin:0 auto;
-      padding:20px;
-    }
-    .brand{
-      display:flex; align-items:center; gap:14px;
-    }
-    .heart{
-      width:40px; height:40px; display:grid; place-items:center;
-      background: conic-gradient(from 180deg at 50% 50%, #ff7a92, #ff4d6d, #ff7a92);
-      -webkit-mask:
-        radial-gradient(12px at 30% 35%,#000 98%,#0000) top left,
-        radial-gradient(12px at 70% 35%,#000 98%,#0000) top right,
-        conic-gradient(from -45deg at 50% 65%, #000 90deg, #0000 0) bottom;
-      -webkit-mask-size:50% 50%;
-      -webkit-mask-repeat:no-repeat;
-      border-radius:12px;
-      box-shadow:0 10px 20px -10px #ff4d6d66, inset 0 0 0 2px #ffffff66;
-    }
-    h1{margin:0; font-size:20px}
-    .grid{
-      display:grid; gap:18px;
-      grid-template-columns: 1fr;
-    }
-    @media(min-width:780px){
-      .grid{grid-template-columns: 1.2fr 1fr;}
-    }
-    .card{
-      background:#fff;
-      border:1px solid #ffe3ea;
-      border-radius:var(--radius);
-      box-shadow:0 10px 30px -20px #ff4d6d55;
-    }
-    .card .head{
-      padding:16px 18px;
-      border-bottom:1px solid #ffe3ea;
-      background:linear-gradient(180deg,#fff,#fff7fa);
-      border-top-left-radius:var(--radius);
-      border-top-right-radius:var(--radius);
-      display:flex; justify-content:space-between; align-items:center;
-      gap:10px;
-    }
-    .card .body{padding:18px}
-    .totals{
-      display:grid; gap:12px;
-      grid-template-columns:1fr; 
-    }
-    @media(min-width:700px){
-      .totals{grid-template-columns: repeat(4,1fr);}
-    }
-    .pill{
-      padding:14px; border-radius:14px; background:var(--cream);
-      border:1px dashed #ffc1cf; min-height:84px;
-    }
-    .pill h3{margin:0 0 6px 0; font-size:13px; color:var(--muted); font-weight:600; letter-spacing:.3px}
-    .amount{font-size:20px; font-weight:700}
-    .sub{font-size:12px; color:var(--muted)}
-    form{
-      display:grid; gap:12px;
-    }
-    .row{display:grid; gap:12px; grid-template-columns:1fr}
-    @media(min-width:560px){
-      .row.two{grid-template-columns:1fr 1fr}
-      .row.three{grid-template-columns:1fr 1fr 1fr}
-      .row.four{grid-template-columns:repeat(4,1fr)}
-    }
-    label{font-size:12px; color:#7a7a7a}
-    input, select, button, textarea{
-      width:100%; padding:12px 12px; border-radius:12px;
-      border:1px solid #ffd1dc; background:#fff;
-      outline:none; font:inherit;
-    }
-    input:focus, select:focus, textarea:focus{box-shadow:var(--ring); border-color:#ff9bb0}
-    button{
-      cursor:pointer; border:0; background:var(--pink); color:#fff; font-weight:700;
-      transition:transform .05s ease, box-shadow .2s ease;
-      box-shadow:0 10px 20px -12px #ff4d6d88;
-    }
-    button:hover{transform:translateY(-1px)}
-    .muted-btn{background:#fff; color:var(--pink); border:1px solid #ffc1cf; box-shadow:none}
-    .stack{display:grid; gap:16px}
-    .list{display:grid; gap:10px; max-height:360px; overflow:auto; padding-right:6px}
-    .item{
-      display:grid; gap:10px;
-      grid-template-columns: auto 1fr auto;
-      align-items:center;
-      border:1px solid #ffe3ea; background:#fff; padding:10px 12px; border-radius:12px;
-    }
-    .badge{
-      padding:4px 8px; font-size:11px; border-radius:999px; border:1px solid #ffc1cf; background:#fff7fa;
-      color:#c2183e; font-weight:600; white-space:nowrap;
-    }
-    .small{font-size:12px; color:#767676}
-    .danger{color:#c2183e}
-    .sep{height:1px; background:#ffe3ea; margin:6px 0}
-    .footer-note{font-size:12px; color:#888; text-align:center; margin-top:18px}
-    .kiss{
-      display:inline-block; transform: rotate(-8deg);
-      background: #fff0f4; border:1px dashed #ffc1cf; padding:2px 8px; border-radius:10px;
-      font-weight:700; font-size:12px; color:#c2183e;
-    }
+    body{margin:0;font-family:Poppins,sans-serif;color:var(--ink);background:linear-gradient(180deg,var(--cream),#fff);}
+    header{position:sticky;top:0;background:#fff9;border-bottom:1px solid #ffd6e0;backdrop-filter:blur(8px);}
+    .wrap{max-width:1100px;margin:0 auto;padding:20px}
+    h1{margin:0;font-size:20px}
+    .grid{display:grid;gap:18px}
+    @media(min-width:780px){.grid{grid-template-columns:1.2fr 1fr}}
+    .card{background:#fff;border:1px solid #ffd6e0;border-radius:var(--radius);box-shadow:0 8px 20px -10px #ff4d6d44}
+    .card .head{padding:14px 16px;border-bottom:1px solid #ffd6e0;background:#fff7fa;border-top-left-radius:var(--radius);border-top-right-radius:var(--radius);display:flex;justify-content:space-between;align-items:center}
+    .card .body{padding:16px}
+    form{display:grid;gap:12px}
+    .row{display:grid;gap:12px}
+    @media(min-width:560px){.row.two{grid-template-columns:1fr 1fr}.row.three{grid-template-columns:1fr 1fr 1fr}.row.four{grid-template-columns:repeat(4,1fr)}}
+    input,select,button{padding:10px;border-radius:12px;border:1px solid #ffd6e0;font:inherit}
+    button{cursor:pointer;background:var(--pink);color:#fff;font-weight:700;border:0}
+    .muted-btn{background:#fff;color:var(--pink);border:1px solid #ffbccc}
+    .list{display:grid;gap:10px;max-height:250px;overflow:auto}
+    .item{display:grid;grid-template-columns:auto 1fr auto;align-items:center;padding:8px 10px;border:1px solid #ffd6e0;border-radius:12px}
+    .badge{padding:2px 8px;border-radius:8px;background:#fff0f4;border:1px solid #ffbccc;font-size:11px;color:#c2183e;font-weight:600}
+    .amount{font-weight:700}
+    .small{font-size:12px;color:#777}
   </style>
 </head>
 <body>
   <header>
-    <div class="wrap brand">
-      <div class="heart" aria-hidden="true"></div>
-      <div>
-        <h1>Financial Couple — Ilham <span aria-hidden="true">❤️</span> Adel</h1>
-        <div class="small">Kelola tabungan sendiri & bersama, urunan bulanan, dan pengeluaran harian.</div>
-      </div>
-    </div>
+    <div class="wrap"><h1>Financial Couple — Ilham ❤️ Adel</h1></div>
   </header>
 
-  <main class="wrap" style="margin-top:12px">
-    <!-- TOTALS -->
+  <main class="wrap">
+    <!-- Ringkasan -->
     <section class="card">
-      <div class="head">
-        <strong>Ringkasan Saldo</strong>
-        <span class="kiss">Teamwork makes love work ✨</span>
-      </div>
+      <div class="head"><b>Ringkasan Saldo</b></div>
       <div class="body">
-        <div class="totals">
-          <div class="pill">
-            <h3>Saldo Ilham (Masing-masing)</h3>
-            <div class="amount" id="ilhamBalance">Rp 0</div>
-            <div class="sub" id="ilhamInfo">Awal Rp 5.700.000 − urunan − belanja pribadi</div>
-          </div>
-          <div class="pill">
-            <h3>Saldo Adel (Masing-masing)</h3>
-            <div class="amount" id="adelBalance">Rp 0</div>
-            <div class="sub" id="adelInfo">Awal Rp 13.000.000 − urunan − belanja pribadi</div>
-          </div>
-          <div class="pill">
-            <h3>Tabungan Bersama</h3>
-            <div class="amount" id="sharedBalance">Rp 0</div>
-            <div class="sub" id="sharedInfo">Total urunan − pengeluaran dari bersama</div>
-          </div>
-          <div class="pill">
-            <h3>Total Aset Saat Ini</h3>
-            <div class="amount" id="grandTotal">Rp 0</div>
-            <div class="sub">Masing-masing + Bersama</div>
-          </div>
+        <div class="grid" style="grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px">
+          <div><div>Ilham</div><div id="ilhamBalance" class="amount">Rp 0</div></div>
+          <div><div>Adel</div><div id="adelBalance" class="amount">Rp 0</div></div>
+          <div><div>Bersama</div><div id="sharedBalance" class="amount">Rp 0</div></div>
+          <div><div>Total</div><div id="grandTotal" class="amount">Rp 0</div></div>
         </div>
       </div>
     </section>
 
     <div class="grid" style="margin-top:18px">
-      <!-- LEFT COLUMN -->
-      <section class="stack">
-        <!-- URUNAN -->
+      <!-- Kiri -->
+      <section class="grid" style="gap:18px">
+        <!-- Urunan -->
         <div class="card">
-          <div class="head">
-            <strong>Urunan Bulanan</strong>
-            <span class="small">Masuk ke <b>Tabungan Bersama</b></span>
-          </div>
+          <div class="head"><b>Urunan Bulanan</b></div>
           <div class="body">
             <form id="contribForm">
-              <div class="row three">
-                <div>
-                  <label for="contribPerson">Siapa</label>
-                  <select id="contribPerson" required>
-                    <option value="ilham">Ilham</option>
-                    <option value="adel">Adel</option>
-                  </select>
-                </div>
-                <div>
-                  <label for="contribMonth">Bulan (YYYY-MM)</label>
-                  <input id="contribMonth" type="month" required />
-                </div>
-                <div>
-                  <label for="contribAmount">Jumlah (Rp)</label>
-                  <input id="contribAmount" type="number" min="0" step="1000" placeholder="700000" required/>
-                </div>
+              <div class="row.three row">
+                <select id="contribPerson" required>
+                  <option value="ilham">Ilham</option>
+                  <option value="adel">Adel</option>
+                </select>
+                <input id="contribMonth" type="month" required/>
+                <input id="contribAmount" type="number" placeholder="700000" required/>
               </div>
-              <div class="row two">
-                <button type="submit">+ Tambah Urunan</button>
-                <button type="button" id="resetMonth" class="muted-btn">Bulan Ini</button>
-              </div>
+              <button type="submit">+ Tambah Urunan</button>
             </form>
-            <div class="sep"></div>
             <div class="list" id="contribList"></div>
           </div>
         </div>
 
-        <!-- PENGELUARAN -->
+        <!-- Pengeluaran -->
         <div class="card">
-          <div class="head">
-            <strong>Pengeluaran Harian</strong>
-            <span class="small">Pilih sumber dana: <b>Masing-masing</b> / <b>Bersama</b></span>
-          </div>
+          <div class="head"><b>Pengeluaran Harian</b></div>
           <div class="body">
             <form id="expenseForm">
-              <div class="row four">
-                <div>
-                  <label for="expPerson">Siapa</label>
-                  <select id="expPerson" required>
-                    <option value="ilham">Ilham</option>
-                    <option value="adel">Adel</option>
-                  </select>
-                </div>
-                <div>
-                  <label for="expSource">Sumber Dana</label>
-                  <select id="expSource" required>
-                    <option value="individual">Masing-masing</option>
-                    <option value="shared">Bersama</option>
-                  </select>
-                </div>
-                <div>
-                  <label for="expAmount">Jumlah (Rp)</label>
-                  <input id="expAmount" type="number" min="0" step="1000" placeholder="120000" required/>
-                </div>
-                <div>
-                  <label for="expDate">Tanggal</label>
-                  <input id="expDate" type="date" required/>
-                </div>
+              <div class="row.four row">
+                <select id="expPerson" required><option value="ilham">Ilham</option><option value="adel">Adel</option></select>
+                <select id="expSource" required><option value="individual">Masing-masing</option><option value="shared">Bersama</option></select>
+                <input id="expAmount" type="number" placeholder="120000" required/>
+                <input id="expDate" type="date" required/>
               </div>
-              <div>
-                <label for="expNote">Catatan (opsional)</label>
-                <input id="expNote" type="text" placeholder="contoh: kopi berdua, kebutuhan dapur, dll"/>
-              </div>
-              <div class="row two">
-                <button type="submit">+ Catat Pengeluaran</button>
-                <button type="button" id="todayBtn" class="muted-btn">Tanggal Hari Ini</button>
-              </div>
+              <input id="expNote" type="text" placeholder="Catatan (opsional)"/>
+              <button type="submit">+ Catat Pengeluaran</button>
             </form>
-            <div class="sep"></div>
             <div class="list" id="expenseList"></div>
           </div>
         </div>
+
+        <!-- Penambahan Uang -->
+        <div class="card">
+          <div class="head"><b>Penambahan Uang</b> <span class="small">(contoh: gaji bulanan)</span></div>
+          <div class="body">
+            <form id="incomeForm">
+              <div class="row.three row">
+                <select id="incPerson" required><option value="ilham">Ilham</option><option value="adel">Adel</option></select>
+                <input id="incAmount" type="number" placeholder="5000000" required/>
+                <input id="incDate" type="date" required/>
+              </div>
+              <input id="incNote" type="text" placeholder="Catatan (opsional)"/>
+              <button type="submit">+ Tambah Uang</button>
+            </form>
+            <div class="list" id="incomeList"></div>
+          </div>
+        </div>
       </section>
 
-      <!-- RIGHT COLUMN -->
-      <section class="stack">
-        <!-- PENGATURAN SALDO AWAL -->
-        <div class="card">
-          <div class="head">
-            <strong>Saldo Awal Masing-masing</strong>
-            <span class="small">Tersimpan di Firestore</span>
-          </div>
-          <div class="body">
-            <form id="initialForm">
-              <div class="row two">
-                <div>
-                  <label for="initIlham">Ilham (Rp)</label>
-                  <input id="initIlham" type="number" step="1000" min="0" required value="5700000"/>
-                </div>
-                <div>
-                  <label for="initAdel">Adel (Rp)</label>
-                  <input id="initAdel" type="number" step="1000" min="0" required value="13000000"/>
-                </div>
-              </div>
-              <div class="row two">
-                <button type="submit">Simpan / Perbarui</button>
-                <button type="button" id="resetInit" class="muted-btn">Kembalikan Default</button>
-              </div>
-              <div class="footer-note">Default: Ilham Rp 5.700.000 &middot; Adel Rp 13.000.000</div>
-            </form>
-          </div>
-        </div>
-
-        <!-- RIWAYAT CEPAT -->
-        <div class="card">
-          <div class="head">
-            <strong>Riwayat Terbaru</strong>
-            <span class="small">Klik 🗑️ untuk menghapus</span>
-          </div>
-          <div class="body">
-            <div class="list" id="recentList"></div>
-          </div>
-        </div>
+      <!-- Kanan -->
+      <section class="grid" style="gap:18px">
+        <div class="card"><div class="head"><b>Riwayat</b></div><div class="body"><div class="list" id="recentList"></div></div></div>
       </section>
     </div>
-
-    <div class="footer-note">Made with <span aria-hidden="true">💗</span> by Ilham & Adel — transparan, rapi, romantis.</div>
   </main>
 
   <script type="module">
     import { initializeApp } from "https://www.gstatic.com/firebasejs/10.11.0/firebase-app.js";
-    import {
-      getFirestore, collection, addDoc, getDocs, query, where,
-      orderBy, onSnapshot, serverTimestamp, setDoc, doc, updateDoc, deleteDoc
-    } from "https://www.gstatic.com/firebasejs/10.11.0/firebase-firestore.js";
+    import { getFirestore, collection, addDoc, doc, setDoc, deleteDoc, onSnapshot, orderBy, query, serverTimestamp } from "https://www.gstatic.com/firebasejs/10.11.0/firebase-firestore.js";
 
-    // === FIREBASE CONFIG (dari Anda) ===
     const firebaseConfig = {
       apiKey: "AIzaSyCX2a-f1UK7iVC-TlmE2iekJMwIs5ccDQU",
       authDomain: "financial-couple-dc3cf.firebaseapp.com",
@@ -328,313 +130,90 @@
       appId: "1:533254877895:web:52b21c324bcf20f46704e2",
       measurementId: "G-CJ8VGQGPK0"
     };
-
-    // === INIT ===
     const app = initializeApp(firebaseConfig);
-    const db  = getFirestore(app);
+    const db = getFirestore(app);
 
-    // === DOM ===
-    const ilhamBalanceEl  = document.getElementById('ilhamBalance');
-    const adelBalanceEl   = document.getElementById('adelBalance');
-    const sharedBalanceEl = document.getElementById('sharedBalance');
-    const grandTotalEl    = document.getElementById('grandTotal');
+    const DEFAULT_ILHAM=5700000, DEFAULT_ADEL=13000000;
+    const fmt = n=>new Intl.NumberFormat('id-ID',{style:'currency',currency:'IDR',maximumFractionDigits:0}).format(n||0);
+    const today=()=>new Date().toISOString().slice(0,10);
 
-    const contribForm  = document.getElementById('contribForm');
-    const contribPerson = document.getElementById('contribPerson');
-    const contribMonth  = document.getElementById('contribMonth');
-    const contribAmount = document.getElementById('contribAmount');
-    const contribList   = document.getElementById('contribList');
-    const resetMonthBtn = document.getElementById('resetMonth');
+    // Elements
+    const ilhamBalanceEl=document.getElementById('ilhamBalance');
+    const adelBalanceEl=document.getElementById('adelBalance');
+    const sharedBalanceEl=document.getElementById('sharedBalance');
+    const grandTotalEl=document.getElementById('grandTotal');
+    const contribList=document.getElementById('contribList');
+    const expenseList=document.getElementById('expenseList');
+    const incomeList=document.getElementById('incomeList');
+    const recentList=document.getElementById('recentList');
 
-    const expenseForm  = document.getElementById('expenseForm');
-    const expPerson    = document.getElementById('expPerson');
-    const expSource    = document.getElementById('expSource');
-    const expAmount    = document.getElementById('expAmount');
-    const expDate      = document.getElementById('expDate');
-    const expNote      = document.getElementById('expNote');
-    const expenseList  = document.getElementById('expenseList');
+    // State
+    let state={ilhamInit:DEFAULT_ILHAM, adelInit:DEFAULT_ADEL, contribs:[], expenses:[], incomes:[]};
 
-    const initialForm  = document.getElementById('initialForm');
-    const initIlham    = document.getElementById('initIlham');
-    const initAdel     = document.getElementById('initAdel');
-    const resetInitBtn = document.getElementById('resetInit');
+    // Snapshot listeners
+    onSnapshot(doc(db,'meta','initialBalances'),snap=>{
+      if(snap.exists()){const d=snap.data();state.ilhamInit=d.ilham||DEFAULT_ILHAM;state.adelInit=d.adel||DEFAULT_ADEL;render();}
+    });
+    onSnapshot(query(collection(db,'contributions'),orderBy('createdAt','desc')),qs=>{
+      state.contribs=qs.docs.map(d=>({id:d.id,...d.data()}));render();
+    });
+    onSnapshot(query(collection(db,'expenses'),orderBy('createdAt','desc')),qs=>{
+      state.expenses=qs.docs.map(d=>({id:d.id,...d.data()}));render();
+    });
+    onSnapshot(query(collection(db,'incomes'),orderBy('createdAt','desc')),qs=>{
+      state.incomes=qs.docs.map(d=>({id:d.id,...d.data()}));render();
+    });
 
-    const recentList   = document.getElementById('recentList');
-
-    // === UTIL ===
-    const fmt = n => new Intl.NumberFormat('id-ID',{style:'currency',currency:'IDR',maximumFractionDigits:0}).format(n||0);
-    const todayStr = () => {
-      const d = new Date();
-      const y = d.getFullYear();
-      const m = String(d.getMonth()+1).padStart(2,'0');
-      const t = String(d.getDate()).padStart(2,'0');
-      return `${y}-${m}-${t}`;
-    }
-    const monthStr = () => {
-      const d = new Date();
-      const y = d.getFullYear();
-      const m = String(d.getMonth()+1).padStart(2,'0');
-      return `${y}-${m}`;
-    }
-
-    // === DEFAULT SALDO AWAL ===
-    const DEFAULT_ILHAM = 5_700_000;
-    const DEFAULT_ADEL  = 13_000_000;
-
-    // Ensure meta/initialBalances exists
-    const metaDocRef = doc(db, 'meta', 'initialBalances');
-    async function bootstrapInitialBalances(){
-      const snap = await getDocs(query(collection(db,'meta')));
-      const existDoc = snap.docs.find(d => d.id === 'initialBalances');
-      if(!existDoc){
-        await setDoc(metaDocRef, {
-          ilham: DEFAULT_ILHAM,
-          adel: DEFAULT_ADEL,
-          createdAt: serverTimestamp(),
-          updatedAt: serverTimestamp()
-        });
-      }
-    }
-    bootstrapInitialBalances().catch(console.error);
-
-    // === LISTENERS ===
-    let state = {
-      ilhamInit: DEFAULT_ILHAM,
-      adelInit: DEFAULT_ADEL,
-      contribs: [],  // {id, person, amount, month, createdAt}
-      expenses: []   // {id, person, amount, source, date, note, createdAt}
+    // Forms
+    document.getElementById('contribForm').onsubmit=async e=>{
+      e.preventDefault();const person=contribPerson.value,month=contribMonth.value,amount=+contribAmount.value;
+      if(amount>0)await addDoc(collection(db,'contributions'),{person,month,amount,createdAt:serverTimestamp()});
+      contribAmount.value='';
+    };
+    document.getElementById('expenseForm').onsubmit=async e=>{
+      e.preventDefault();const person=expPerson.value,source=expSource.value,amount=+expAmount.value,date=expDate.value,note=expNote.value||'';
+      if(amount>0)await addDoc(collection(db,'expenses'),{person,source,amount,date,note,createdAt:serverTimestamp()});
+      expAmount.value='';expNote.value='';
+    };
+    document.getElementById('incomeForm').onsubmit=async e=>{
+      e.preventDefault();const person=incPerson.value,amount=+incAmount.value,date=incDate.value,note=incNote.value||'';
+      if(amount>0)await addDoc(collection(db,'incomes'),{person,amount,date,note,createdAt:serverTimestamp()});
+      incAmount.value='';incNote.value='';
     };
 
-    // meta/initialBalances
-    onSnapshot(metaDocRef, (snap)=>{
-      if(snap.exists()){
-        const data = snap.data();
-        state.ilhamInit = Number(data.ilham)||0;
-        state.adelInit  = Number(data.adel)||0;
-        initIlham.value = state.ilhamInit;
-        initAdel.value  = state.adelInit;
-        renderTotals();
-      }
-    });
+    // Render
+    function render(){
+      const ilhamU=sum(state.contribs.filter(c=>c.person==='ilham').map(c=>c.amount));
+      const adelU =sum(state.contribs.filter(c=>c.person==='adel').map(c=>c.amount));
+      const ilhamOut=sum(state.expenses.filter(e=>e.person==='ilham'&&e.source==='individual').map(e=>e.amount));
+      const adelOut =sum(state.expenses.filter(e=>e.person==='adel' &&e.source==='individual').map(e=>e.amount));
+      const sharedOut=sum(state.expenses.filter(e=>e.source==='shared').map(e=>e.amount));
+      const ilhamInc=sum(state.incomes.filter(i=>i.person==='ilham').map(i=>i.amount));
+      const adelInc =sum(state.incomes.filter(i=>i.person==='adel' ).map(i=>i.amount));
 
-    // contributions
-    onSnapshot(query(collection(db,'contributions'), orderBy('createdAt','desc')), (qs)=>{
-      state.contribs = qs.docs.map(d=>({id:d.id, ...d.data()}));
-      renderContribs();
-      renderTotals();
-      renderRecents();
-    });
+      const ilhamSaldo=state.ilhamInit - ilhamU - ilhamOut + ilhamInc;
+      const adelSaldo =state.adelInit  - adelU  - adelOut  + adelInc;
+      const sharedSaldo= (ilhamU+adelU) - sharedOut;
+      const grand=ilhamSaldo+adelSaldo+sharedSaldo;
 
-    // expenses
-    onSnapshot(query(collection(db,'expenses'), orderBy('createdAt','desc')), (qs)=>{
-      state.expenses = qs.docs.map(d=>({id:d.id, ...d.data()}));
-      renderExpenses();
-      renderTotals();
-      renderRecents();
-    });
+      ilhamBalanceEl.textContent=fmt(ilhamSaldo);
+      adelBalanceEl.textContent=fmt(adelSaldo);
+      sharedBalanceEl.textContent=fmt(sharedSaldo);
+      grandTotalEl.textContent=fmt(grand);
 
-    // === RENDER ===
-    function calcTotals(){
-      const ilhamUrunan = sum(state.contribs.filter(c=>c.person==='ilham').map(c=>+c.amount||0));
-      const adelUrunan  = sum(state.contribs.filter(c=>c.person==='adel').map(c=>+c.amount||0));
-      const totalUrunan = ilhamUrunan + adelUrunan;
+      contribList.innerHTML=state.contribs.map(c=>`<div class="item"><span class="badge">Urunan</span><div>${c.person} - ${fmt(c.amount)} (${c.month})</div></div>`).join('');
+      expenseList.innerHTML=state.expenses.map(e=>`<div class="item"><span class="badge">${e.source}</span><div>${e.person} - ${fmt(e.amount)} (${e.date})</div></div>`).join('');
+      incomeList.innerHTML=state.incomes.map(i=>`<div class="item"><span class="badge">Income</span><div>${i.person} +${fmt(i.amount)} (${i.date})</div></div>`).join('');
 
-      const ilhamPribadiOut = sum(state.expenses.filter(e=>e.person==='ilham' && e.source==='individual').map(e=>+e.amount||0));
-      const adelPribadiOut  = sum(state.expenses.filter(e=>e.person==='adel'  && e.source==='individual').map(e=>+e.amount||0));
-      const sharedOut       = sum(state.expenses.filter(e=>e.source==='shared').map(e=>+e.amount||0));
-
-      const ilhamSaldo = (state.ilhamInit - ilhamUrunan - ilhamPribadiOut);
-      const adelSaldo  = (state.adelInit  - adelUrunan  - adelPribadiOut);
-      const sharedSaldo = totalUrunan - sharedOut;
-
-      const grand = ilhamSaldo + adelSaldo + sharedSaldo;
-
-      return {
-        ilhamSaldo, adelSaldo, sharedSaldo, grand,
-        ilhamUrunan, adelUrunan, totalUrunan,
-        ilhamPribadiOut, adelPribadiOut, sharedOut
-      };
-    }
-
-    function renderTotals(){
-      const t = calcTotals();
-      ilhamBalanceEl.textContent  = fmt(t.ilhamSaldo);
-      adelBalanceEl.textContent   = fmt(t.adelSaldo);
-      sharedBalanceEl.textContent = fmt(t.sharedSaldo);
-      grandTotalEl.textContent    = fmt(t.grand);
-
-      document.getElementById('ilhamInfo').innerHTML =
-        `Awal ${fmt(state.ilhamInit)} − urunan ${fmt(t.ilhamUrunan)} − belanja pribadi ${fmt(t.ilhamPribadiOut)}`;
-      document.getElementById('adelInfo').innerHTML =
-        `Awal ${fmt(state.adelInit)} − urunan ${fmt(t.adelUrunan)} − belanja pribadi ${fmt(t.adelPribadiOut)}`;
-      document.getElementById('sharedInfo').innerHTML =
-        `Total urunan ${fmt(t.totalUrunan)} − pengeluaran bersama ${fmt(t.sharedOut)}`;
-    }
-
-    function renderContribs(){
-      if(state.contribs.length===0){
-        contribList.innerHTML = `<div class="small">Belum ada urunan. Yuk mulai isi untuk bulan ini 💞</div>`;
-        return;
-      }
-      contribList.innerHTML = state.contribs.map(c=>{
-        const who = c.person==='ilham' ? 'Ilham' : 'Adel';
-        const time = c.createdAt?.toDate ? c.createdAt.toDate() : null;
-        const when = time ? time.toLocaleString('id-ID') : '';
-        return `
-          <div class="item">
-            <span class="badge">Urunan</span>
-            <div>
-              <div><strong>${who}</strong> — ${fmt(c.amount)} <span class="small">(${c.month})</span></div>
-              <div class="small">${when}</div>
-            </div>
-            <button class="muted-btn" onclick="window._delContrib('${c.id}')" title="hapus">🗑️</button>
-          </div>
-        `;
+      const recent=[...state.contribs.map(x=>({...x,type:'U'})),...state.expenses.map(x=>({...x,type:'E'})),...state.incomes.map(x=>({...x,type:'I'}))].sort((a,b)=>b.createdAt?.toMillis()-a.createdAt?.toMillis()).slice(0,10);
+      recentList.innerHTML=recent.map(r=>{
+        if(r.type==='U')return `<div class="item"><span class="badge">Urunan</span><div>${r.person} - ${fmt(r.amount)}</div></div>`;
+        if(r.type==='E')return `<div class="item"><span class="badge">Out</span><div>${r.person} - ${fmt(r.amount)}</div></div>`;
+        return `<div class="item"><span class="badge">Income</span><div>${r.person} +${fmt(r.amount)}</div></div>`;
       }).join('');
     }
-
-    function renderExpenses(){
-      if(state.expenses.length===0){
-        expenseList.innerHTML = `<div class="small">Belum ada pengeluaran. Keep saving, lovebirds! 🕊️</div>`;
-        return;
-      }
-      expenseList.innerHTML = state.expenses.map(e=>{
-        const who = e.person==='ilham' ? 'Ilham' : 'Adel';
-        const src = e.source==='shared' ? 'Bersama' : 'Masing-masing';
-        const time = e.createdAt?.toDate ? e.createdAt.toDate() : null;
-        const when = time ? time.toLocaleString('id-ID') : '';
-        const note = e.note ? `<div class="small">Catatan: ${escapeHtml(e.note)}</div>` : '';
-        return `
-          <div class="item">
-            <span class="badge">${src}</span>
-            <div>
-              <div><strong>${who}</strong> — ${fmt(e.amount)} <span class="small">(${e.date})</span></div>
-              ${note}
-              <div class="small">${when}</div>
-            </div>
-            <button class="muted-btn" onclick="window._delExpense('${e.id}')" title="hapus">🗑️</button>
-          </div>
-        `;
-      }).join('');
-    }
-
-    function renderRecents(){
-      // gabungkan & sort createdAt desc, batasi 12 terbaru
-      const toRow = (type, o) => {
-        const time = o.createdAt?.toDate ? o.createdAt.toDate() : null;
-        const when = time ? time.toLocaleString('id-ID') : '';
-        if(type==='contrib'){
-          const who = o.person==='ilham'?'Ilham':'Adel';
-          return {when, html: `
-            <div class="item">
-              <span class="badge">Urunan</span>
-              <div><strong>${who}</strong> — ${fmt(o.amount)} <span class="small">(${o.month})</span><div class="small">${when}</div></div>
-              <button class="muted-btn" onclick="window._delContrib('${o.id}')">🗑️</button>
-            </div>`};
-        }else{
-          const who = o.person==='ilham'?'Ilham':'Adel';
-          const src = o.source==='shared'?'Bersama':'Masing-masing';
-          return {when, html: `
-            <div class="item">
-              <span class="badge">${src}</span>
-              <div><strong>${who}</strong> — ${fmt(o.amount)} <span class="small">(${o.date})</span>${o.note?`<div class="small">Catatan: ${escapeHtml(o.note)}</div>`:''}<div class="small">${when}</div></div>
-              <button class="muted-btn" onclick="window._delExpense('${o.id}')">🗑️</button>
-            </div>`};
-        }
-      };
-
-      const rows = [
-        ...state.contribs.map(c=>({type:'contrib', ...toRow('contrib', c)})),
-        ...state.expenses.map(e=>({type:'expense', ...toRow('expense', e)})),
-      ].sort((a,b)=>new Date(b.when)-new Date(a.when)).slice(0,12);
-
-      if(rows.length===0){
-        recentList.innerHTML = `<div class="small">Belum ada aktivitas.</div>`;
-        return;
-      }
-      recentList.innerHTML = rows.map(r=>r.html).join('');
-    }
-
-    function sum(arr){ return arr.reduce((a,b)=>a+(+b||0),0); }
-    function escapeHtml(s=''){
-      return s.replace(/[&<>"']/g, m=>({ '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;' }[m]));
-    }
-
-    // === ACTIONS ===
-    // Urunan submit
-    contribForm.addEventListener('submit', async (e)=>{
-      e.preventDefault();
-      const person = contribPerson.value;
-      const month  = contribMonth.value;
-      const amount = +contribAmount.value;
-      if(!person || !month || !(amount>0)) return alert('Lengkapi data urunan dengan benar ya 💕');
-
-      await addDoc(collection(db,'contributions'), {
-        person, month, amount,
-        createdAt: serverTimestamp()
-      });
-      contribAmount.value = '';
-    });
-
-    // Expense submit
-    expenseForm.addEventListener('submit', async (e)=>{
-      e.preventDefault();
-      const person = expPerson.value;
-      const source = expSource.value; // 'individual' | 'shared'
-      const amount = +expAmount.value;
-      const date   = expDate.value;
-      const note   = expNote.value?.trim() || '';
-      if(!person || !source || !(amount>0) || !date) return alert('Lengkapi data pengeluaran dengan benar ya 💗');
-
-      // Optional guard: prevent minus shared balance
-      const t = calcTotals();
-      if(source==='shared' && amount > t.sharedSaldo){
-        const ok = confirm('Jumlah melebihi Tabungan Bersama saat ini. Tetap catat?');
-        if(!ok) return;
-      }
-
-      await addDoc(collection(db,'expenses'), {
-        person, source, amount, date, note,
-        createdAt: serverTimestamp()
-      });
-      expAmount.value=''; expNote.value='';
-    });
-
-    // Delete helpers
-    window._delContrib = async (id)=>{
-      const ok = confirm('Hapus entri urunan ini?');
-      if(ok) await deleteDoc(doc(db,'contributions', id));
-    };
-    window._delExpense = async (id)=>{
-      const ok = confirm('Hapus entri pengeluaran ini?');
-      if(ok) await deleteDoc(doc(db,'expenses', id));
-    };
-
-    // Initial form save
-    initialForm.addEventListener('submit', async (e)=>{
-      e.preventDefault();
-      const il = +initIlham.value||0;
-      const ad = +initAdel.value||0;
-      await setDoc(metaDocRef, { ilham: il, adel: ad, updatedAt: serverTimestamp() }, { merge:true });
-      alert('Saldo awal disimpan 💞');
-    });
-
-    // Helpers (buttons)
-    resetMonthBtn.addEventListener('click', ()=>{
-      contribMonth.value = monthStr();
-    });
-    document.getElementById('todayBtn').addEventListener('click', ()=>{
-      expDate.value = todayStr();
-    });
-    resetInitBtn.addEventListener('click', ()=>{
-      initIlham.value = DEFAULT_ILHAM;
-      initAdel.value  = DEFAULT_ADEL;
-    });
-
-    // Prefill defaults on UI
-    contribMonth.value = monthStr();
-    expDate.value = todayStr();
-
+    function sum(a){return a.reduce((x,y)=>x+(+y||0),0)}
+    incDate.value=today();expDate.value=today();contribMonth.value=today().slice(0,7);
   </script>
 </body>
 </html>
