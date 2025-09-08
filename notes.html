@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Financial Couple — Ilham ❤️ Adel</title>
+
+  <!-- SortableJS -->
+  <script src="https://cdn.jsdelivr.net/npm/sortablejs@1.15.0/Sortable.min.js"></script>
+
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #fff0f5;
+      color: #333;
+    }
+
+    header {
+      background: #ff4d6d;
+      color: white;
+      padding: 15px;
+      text-align: center;
+      position: relative;
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 1.5rem;
+    }
+
+    #menu-btn {
+      position: absolute;
+      left: 15px;
+      top: 15px;
+      font-size: 1.5rem;
+      cursor: pointer;
+      background: none;
+      border: none;
+      color: white;
+    }
+
+    /* Board layout */
+    .board {
+      display: flex;
+      gap: 15px;
+      padding: 20px;
+      overflow-x: auto;
+    }
+
+    .column {
+      flex: 1;
+      min-width: 280px;
+      background: #fff;
+      border-radius: 8px;
+      padding: 10px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      display: flex;
+      flex-direction: column;
+      max-height: calc(100vh - 100px);
+    }
+
+    .column h2 {
+      text-align: center;
+      color: #ff4d6d;
+    }
+
+    .notes {
+      flex: 1;
+      overflow-y: auto;
+      margin-bottom: 10px;
+    }
+
+    .note {
+      background: #ffe6eb;
+      padding: 8px;
+      margin-bottom: 8px;
+      border-radius: 6px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      cursor: grab;
+    }
+
+    .note .text {
+      flex: 1;
+      margin-right: 10px;
+    }
+
+    .note button {
+      background: none;
+      border: none;
+      cursor: pointer;
+      margin-left: 5px;
+    }
+
+    .add-note {
+      display: flex;
+      gap: 5px;
+    }
+
+    .add-note input {
+      flex: 1;
+      padding: 6px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+
+    .add-note button {
+      padding: 6px 10px;
+      border: none;
+      background: #ff4d6d;
+      color: white;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="wrap"><h1>Notes</h1></div>
+</header>
+
+<!-- Board -->
+<div class="board">
+  <div class="column" data-status="todo">
+    <h2>To Do</h2>
+    <div class="notes"></div>
+    <div class="add-note">
+      <input type="text" placeholder="Tambah catatan...">
+      <button>➕</button>
+    </div>
+  </div>
+
+  <div class="column" data-status="doing">
+    <h2>Doing</h2>
+    <div class="notes"></div>
+    <div class="add-note">
+      <input type="text" placeholder="Tambah catatan...">
+      <button>➕</button>
+    </div>
+  </div>
+
+  <div class="column" data-status="done">
+    <h2>Done</h2>
+    <div class="notes"></div>
+    <div class="add-note">
+      <input type="text" placeholder="Tambah catatan...">
+      <button>➕</button>
+    </div>
+  </div>
+</div>
+
+<!-- Firebase & Script -->
+<script type="module">
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.5/firebase-app.js";
+  import { getFirestore, collection, addDoc, doc, updateDoc, deleteDoc, onSnapshot, query, orderBy } from "https://www.gstatic.com/firebasejs/10.12.5/firebase-firestore.js";
+
+  const firebaseConfig = {
+    apiKey: "AIzaSyCX2a-f1UK7iVC-TlmE2iekJMwIs5ccDQU",
+    authDomain: "financial-couple-dc3cf.firebaseapp.com",
+    projectId: "financial-couple-dc3cf",
+    storageBucket: "financial-couple-dc3cf.firebasestorage.app",
+    messagingSenderId: "533254877895",
+    appId: "1:533254877895:web:52b21c324bcf20f46704e2",
+    measurementId: "G-CJ8VGQGPK0"
+  };
+
+  const app = initializeApp(firebaseConfig);
+  const db = getFirestore(app);
+  const notesRef = collection(db, "notes");
+
+  // Render realtime notes
+  onSnapshot(query(notesRef, orderBy("createdAt")), snapshot => {
+    document.querySelectorAll(".notes").forEach(el => el.innerHTML = "");
+    snapshot.forEach(docSnap => {
+      const data = docSnap.data();
+      renderNote(docSnap.id, data.text, data.status);
+    });
+  });
+
+  function renderNote(id, text, status) {
+    const note = document.createElement("div");
+    note.className = "note";
+    note.dataset.id = id;
+
+    const span = document.createElement("span");
+    span.className = "text";
+    span.textContent = text;
+
+    const editBtn = document.createElement("button");
+    editBtn.textContent = "✏️";
+    editBtn.onclick = async () => {
+      const newText = prompt("Edit catatan:", span.textContent);
+      if (newText) await updateDoc(doc(db, "notes", id), { text: newText });
+    };
+
+    const delBtn = document.createElement("button");
+    delBtn.textContent = "🗑️";
+    delBtn.onclick = async () => {
+      if (confirm("Hapus catatan ini?")) await deleteDoc(doc(db, "notes", id));
+    };
+
+    note.append(span, editBtn, delBtn);
+
+    const col = document.querySelector(`.column[data-status="${status}"] .notes`);
+    if (col) col.appendChild(note);
+  }
+
+  // Tambah catatan
+  document.querySelectorAll(".add-note").forEach(addBox => {
+    const input = addBox.querySelector("input");
+    const btn = addBox.querySelector("button");
+    const column = addBox.closest(".column").dataset.status;
+
+    btn.addEventListener("click", async () => {
+      if (input.value.trim() === "") return;
+      await addDoc(notesRef, {
+        text: input.value,
+        status: column,
+        createdAt: new Date()
+      });
+      input.value = "";
+    });
+  });
+
+  // Drag & Drop pakai SortableJS
+  document.querySelectorAll(".column .notes").forEach(notesContainer => {
+    new Sortable(notesContainer, {
+      group: "shared",
+      animation: 150,
+      onEnd: async (evt) => {
+        const id = evt.item.dataset.id;
+        const newStatus = evt.to.closest(".column").dataset.status;
+        await updateDoc(doc(db, "notes", id), { status: newStatus });
+      }
+    });
+  });
+</script>
+
+</body>
+</html>
