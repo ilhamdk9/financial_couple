@@ -5,34 +5,272 @@
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Financial Couple — Ilham ❤️ Adel</title>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="manifest" href="/manifest.webmanifest">
+  <meta name="theme-color" content="#ff4d6d">
+  <link rel="icon" href="/icons/heart.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="/icons/heart-192.png">
   <style>
-    :root{
-      --pink:#ff4d6d;--rose:#ffe0e6;--cream:#fff7f9;--ink:#2a2a2a;
-      --muted:#6b6b6b;--radius:16px;
+    :root {
+      --pink: #ff4d6d;
+      --rose: #ffe0e6;
+      --cream: #fff7f9;
+      --ink: #2a2a2a;
+      --muted: #6b6b6b;
+      --radius: 1rem;
     }
-    *{box-sizing:border-box}
-    body{margin:0;font-family:Poppins,sans-serif;color:var(--ink);background:linear-gradient(180deg,var(--cream),#fff);}
-    header{position:sticky;top:0;background:#fff9;border-bottom:1px solid #ffd6e0;backdrop-filter:blur(8px);}
-    .wrap{max-width:1100px;margin:0 auto;padding:20px}
-    h1{margin:0;font-size:20px}
-    .grid{display:grid;gap:18px}
-    @media(min-width:780px){.grid{grid-template-columns:1.2fr 1fr}}
-    .card{background:#fff;border:1px solid #ffd6e0;border-radius:var(--radius);box-shadow:0 8px 20px -10px #ff4d6d44}
-    .card .head{padding:14px 16px;border-bottom:1px solid #ffd6e0;background:#fff7fa;border-top-left-radius:var(--radius);border-top-right-radius:var(--radius);display:flex;justify-content:space-between;align-items:center}
-    .card .body{padding:16px}
-    form{display:grid;gap:12px}
-    .row{display:grid;gap:12px}
-    @media(min-width:560px){.row.two{grid-template-columns:1fr 1fr}.row.three{grid-template-columns:1fr 1fr 1fr}.row.four{grid-template-columns:repeat(4,1fr)}}
-    input,select,button{padding:10px;border-radius:12px;border:1px solid #ffd6e0;font:inherit}
-    button{cursor:pointer;background:var(--pink);color:#fff;font-weight:700;border:0}
-    .muted-btn{background:#fff;color:var(--pink);border:1px solid #ffbccc}
-    .list{display:grid;gap:10px;max-height:250px;overflow:auto}
-    .item{display:grid;grid-template-columns:auto 1fr auto;align-items:center;padding:8px 10px;border:1px solid #ffd6e0;border-radius:12px}
-    .badge{padding:2px 8px;border-radius:8px;background:#fff0f4;border:1px solid #ffbccc;font-size:11px;color:#c2183e;font-weight:600}
-    .amount{font-weight:700}
-    .small{font-size:12px;color:#777}
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: Poppins, sans-serif;
+      color: var(--ink);
+      background: linear-gradient(180deg, var(--cream), #fff);
+      line-height: 1.5;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      background: #fff9;
+      border-bottom: 1px solid #ffd6e0;
+      backdrop-filter: blur(8px);
+      z-index: 10;
+    }
+
+    .wrap {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 1rem;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: clamp(1rem, 2vw, 1.5rem);
+    }
+
+    .grid {
+      display: grid;
+      gap: 1rem;
+    }
+
+    /* grid otomatis responsif */
+    @media (min-width: 780px) {
+      .grid.two-col {
+        grid-template-columns: 1.2fr 1fr;
+      }
+    }
+
+    .card {
+      background: #fff;
+      border: 1px solid #ffd6e0;
+      border-radius: var(--radius);
+      box-shadow: 0 8px 20px -10px #ff4d6d44;
+    }
+
+    .card .head {
+      padding: 0.75rem 1rem;
+      border-bottom: 1px solid #ffd6e0;
+      background: #fff7fa;
+      border-top-left-radius: var(--radius);
+      border-top-right-radius: var(--radius);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: .5rem;
+    }
+
+    .card .body {
+      padding: 1rem;
+    }
+
+    form {
+      display: grid;
+      gap: .75rem;
+    }
+
+    .row {
+      display: grid;
+      gap: .75rem;
+    }
+
+    /* kolom responsif */
+    @media (min-width: 560px) {
+      .row.two {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .row.three {
+        grid-template-columns: repeat(3, 1fr);
+      }
+
+      .row.four {
+        grid-template-columns: repeat(4, 1fr);
+      }
+    }
+
+    input,
+    select,
+    button {
+      padding: .65rem .75rem;
+      border-radius: .75rem;
+      border: 1px solid #ffd6e0;
+      font: inherit;
+      width: 100%;
+    }
+
+    button {
+      cursor: pointer;
+      background: var(--pink);
+      color: #fff;
+      font-weight: 700;
+      border: 0;
+      transition: background .2s;
+      margin-bottom: 10px;
+      margin-top: 10px;
+    }
+
+    button:hover {
+      background: #e53b5d;
+    }
+
+    .muted-btn {
+      background: #fff;
+      color: var(--pink);
+      border: 1px solid #ffbccc;
+    }
+
+    .list {
+      display: grid;
+      gap: .6rem;
+      max-height: 250px;
+      overflow: auto;
+    }
+
+    .badge {
+      padding: 2px 8px;
+      border-radius: 8px;
+      background: #fff0f4;
+      border: 1px solid #ffbccc;
+      font-size: .7rem;
+      color: #c2183e;
+      font-weight: 600;
+    }
+
+    .amount {
+      font-weight: 700;
+    }
+
+    .small {
+      font-size: .8rem;
+      color: #777;
+    }
+
+    /* agar konten utama 2 kolom hanya di layar lebar */
+    .main-grid {
+      display: grid;
+      gap: 1rem;
+    }
+
+    .item {
+      padding: 1rem;
+      border: 1px solid #ffd6e0;
+      border-radius: 1rem;
+      background: #fff;
+      margin-bottom: 1rem;
+      box-shadow: 0 4px 10px -6px rgba(255, 77, 109, .3);
+    }
+
+    .item-header {
+      display: flex;
+      flex-direction: column;
+      gap: .25rem;
+    }
+
+    .badge {
+      display: inline-block;
+      padding: 3px 10px;
+      border-radius: 999px;
+      background: #ffe0eb;
+      font-size: .75rem;
+      color: #ff4d6d;
+      font-weight: 600;
+      margin-bottom: .3rem;
+      width: max-content;
+    }
+
+    .label {
+      font-weight: 600;
+      color: #333;
+    }
+
+    .note {
+      font-size: .85rem;
+      margin: .4rem 0;
+      color: #666;
+      font-style: italic;
+    }
+
+    .item-footer {
+      margin-top: .6rem;
+      display: flex;
+      justify-content: flex-end;
+      gap: .5rem;
+    }
+
+    .btn-action {
+      padding: .35rem .7rem;
+      border: none;
+      border-radius: .5rem;
+      font-size: .85rem;
+      cursor: pointer;
+      background: #ffe0eb;
+      color: #ff4d6d;
+      transition: all .2s ease;
+    }
+
+    .btn-action:hover {
+      background: #ff4d6d;
+      color: #fff;
+    }
+
+    @media (min-width: 780px) {
+      .main-grid {
+        grid-template-columns: 1.2fr 1fr;
+      }
+    }
   </style>
 </head>
+<script>
+if ('serviceWorker' in navigator) {
+  navigator.serviceWorker.register('/sw.js');
+}
+
+// opsional: tombol install
+window.addEventListener('beforeinstallprompt', (e) => {
+  e.preventDefault();
+  window.deferredPrompt = e;
+  const btn = document.getElementById('installPWA');
+  if (btn) btn.style.display = 'inline-flex';
+});
+
+async function installPWA() {
+  const prompt = window.deferredPrompt;
+  if (!prompt) return;
+  prompt.prompt();
+  await prompt.userChoice;
+  window.deferredPrompt = null;
+  const btn = document.getElementById('installPWA');
+  if (btn) btn.style.display = 'none';
+}
+</script>
+
+<!-- contoh tombol (opsional) -->
+<button id="installPWA" onclick="installPWA()" style="display:none"
+  class="muted-btn" aria-label="Install App">⬇️ Install App</button>
 <body>
   <header>
     <div class="wrap"><h1>Financial Couple — Ilham ❤️ Adel</h1></div>
@@ -116,104 +354,203 @@
       </section>
     </div>
   </main>
-
   <script type="module">
-    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.11.0/firebase-app.js";
-    import { getFirestore, collection, addDoc, doc, setDoc, deleteDoc, onSnapshot, orderBy, query, serverTimestamp } from "https://www.gstatic.com/firebasejs/10.11.0/firebase-firestore.js";
+  import { 
+    initializeApp 
+  } from "https://www.gstatic.com/firebasejs/10.11.0/firebase-app.js";
+  import { 
+    getFirestore, collection, addDoc, doc, setDoc, deleteDoc, updateDoc, 
+    onSnapshot, orderBy, query, serverTimestamp 
+  } from "https://www.gstatic.com/firebasejs/10.11.0/firebase-firestore.js";
 
-    const firebaseConfig = {
-      apiKey: "AIzaSyCX2a-f1UK7iVC-TlmE2iekJMwIs5ccDQU",
-      authDomain: "financial-couple-dc3cf.firebaseapp.com",
-      projectId: "financial-couple-dc3cf",
-      storageBucket: "financial-couple-dc3cf.firebasestorage.app",
-      messagingSenderId: "533254877895",
-      appId: "1:533254877895:web:52b21c324bcf20f46704e2",
-      measurementId: "G-CJ8VGQGPK0"
-    };
-    const app = initializeApp(firebaseConfig);
-    const db = getFirestore(app);
+  const firebaseConfig = {
+    apiKey: "AIzaSyCX2a-f1UK7iVC-TlmE2iekJMwIs5ccDQU",
+    authDomain: "financial-couple-dc3cf.firebaseapp.com",
+    projectId: "financial-couple-dc3cf",
+    storageBucket: "financial-couple-dc3cf.firebasestorage.app",
+    messagingSenderId: "533254877895",
+    appId: "1:533254877895:web:52b21c324bcf20f46704e2",
+    measurementId: "G-CJ8VGQGPK0"
+  };
+  const app = initializeApp(firebaseConfig);
+  const db = getFirestore(app);
 
-    const DEFAULT_ILHAM=5700000, DEFAULT_ADEL=13000000;
-    const fmt = n=>new Intl.NumberFormat('id-ID',{style:'currency',currency:'IDR',maximumFractionDigits:0}).format(n||0);
-    const today=()=>new Date().toISOString().slice(0,10);
+  const DEFAULT_ILHAM=4636953, DEFAULT_ADEL=14010326;
+  const fmt = n=>new Intl.NumberFormat('id-ID',{style:'currency',currency:'IDR',maximumFractionDigits:0}).format(n||0);
+  const today=()=>new Date().toISOString().slice(0,10);
 
-    // Elements
-    const ilhamBalanceEl=document.getElementById('ilhamBalance');
-    const adelBalanceEl=document.getElementById('adelBalance');
-    const sharedBalanceEl=document.getElementById('sharedBalance');
-    const grandTotalEl=document.getElementById('grandTotal');
-    const contribList=document.getElementById('contribList');
-    const expenseList=document.getElementById('expenseList');
-    const incomeList=document.getElementById('incomeList');
-    const recentList=document.getElementById('recentList');
+  // Elements
+  const ilhamBalanceEl=document.getElementById('ilhamBalance');
+  const adelBalanceEl=document.getElementById('adelBalance');
+  const sharedBalanceEl=document.getElementById('sharedBalance');
+  const grandTotalEl=document.getElementById('grandTotal');
+  const contribList=document.getElementById('contribList');
+  const expenseList=document.getElementById('expenseList');
+  const incomeList=document.getElementById('incomeList');
+  const recentList=document.getElementById('recentList');
 
-    // State
-    let state={ilhamInit:DEFAULT_ILHAM, adelInit:DEFAULT_ADEL, contribs:[], expenses:[], incomes:[]};
+  // State
+  let state={ilhamInit:DEFAULT_ILHAM, adelInit:DEFAULT_ADEL, contribs:[], expenses:[], incomes:[]};
 
-    // Snapshot listeners
-    onSnapshot(doc(db,'meta','initialBalances'),snap=>{
-      if(snap.exists()){const d=snap.data();state.ilhamInit=d.ilham||DEFAULT_ILHAM;state.adelInit=d.adel||DEFAULT_ADEL;render();}
-    });
-    onSnapshot(query(collection(db,'contributions'),orderBy('createdAt','desc')),qs=>{
-      state.contribs=qs.docs.map(d=>({id:d.id,...d.data()}));render();
-    });
-    onSnapshot(query(collection(db,'expenses'),orderBy('createdAt','desc')),qs=>{
-      state.expenses=qs.docs.map(d=>({id:d.id,...d.data()}));render();
-    });
-    onSnapshot(query(collection(db,'incomes'),orderBy('createdAt','desc')),qs=>{
-      state.incomes=qs.docs.map(d=>({id:d.id,...d.data()}));render();
-    });
+  // Snapshot listeners
+  onSnapshot(doc(db,'meta','initialBalances'),snap=>{
+    if(snap.exists()){const d=snap.data();state.ilhamInit=d.ilham||DEFAULT_ILHAM;state.adelInit=d.adel||DEFAULT_ADEL;render();}
+  });
+  onSnapshot(query(collection(db,'contributions'),orderBy('createdAt','desc')),qs=>{
+    state.contribs=qs.docs.map(d=>({id:d.id,...d.data()}));render();
+  });
+  onSnapshot(query(collection(db,'expenses'),orderBy('createdAt','desc')),qs=>{
+    state.expenses=qs.docs.map(d=>({id:d.id,...d.data()}));render();
+  });
+  onSnapshot(query(collection(db,'incomes'),orderBy('createdAt','desc')),qs=>{
+    state.incomes=qs.docs.map(d=>({id:d.id,...d.data()}));render();
+  });
 
-    // Forms
-    document.getElementById('contribForm').onsubmit=async e=>{
-      e.preventDefault();const person=contribPerson.value,month=contribMonth.value,amount=+contribAmount.value;
-      if(amount>0)await addDoc(collection(db,'contributions'),{person,month,amount,createdAt:serverTimestamp()});
-      contribAmount.value='';
-    };
-    document.getElementById('expenseForm').onsubmit=async e=>{
-      e.preventDefault();const person=expPerson.value,source=expSource.value,amount=+expAmount.value,date=expDate.value,note=expNote.value||'';
-      if(amount>0)await addDoc(collection(db,'expenses'),{person,source,amount,date,note,createdAt:serverTimestamp()});
-      expAmount.value='';expNote.value='';
-    };
-    document.getElementById('incomeForm').onsubmit=async e=>{
-      e.preventDefault();const person=incPerson.value,amount=+incAmount.value,date=incDate.value,note=incNote.value||'';
-      if(amount>0)await addDoc(collection(db,'incomes'),{person,amount,date,note,createdAt:serverTimestamp()});
-      incAmount.value='';incNote.value='';
-    };
+  // Forms
+  document.getElementById('contribForm').onsubmit=async e=>{
+    e.preventDefault();const person=contribPerson.value,month=contribMonth.value,amount=+contribAmount.value;
+    if(amount>0)await addDoc(collection(db,'contributions'),{person,month,amount,createdAt:serverTimestamp()});
+    contribAmount.value='';
+  };
+  document.getElementById('expenseForm').onsubmit=async e=>{
+    e.preventDefault();const person=expPerson.value,source=expSource.value,amount=+expAmount.value,date=expDate.value,note=expNote.value||'';
+    if(amount>0)await addDoc(collection(db,'expenses'),{person,source,amount,date,note,createdAt:serverTimestamp()});
+    expAmount.value='';expNote.value='';
+  };
+  document.getElementById('incomeForm').onsubmit=async e=>{
+    e.preventDefault();const person=incPerson.value,amount=+incAmount.value,date=incDate.value,note=incNote.value||'';
+    if(amount>0)await addDoc(collection(db,'incomes'),{person,amount,date,note,createdAt:serverTimestamp()});
+    incAmount.value='';incNote.value='';
+  };
 
-    // Render
-    function render(){
-      const ilhamU=sum(state.contribs.filter(c=>c.person==='ilham').map(c=>c.amount));
-      const adelU =sum(state.contribs.filter(c=>c.person==='adel').map(c=>c.amount));
-      const ilhamOut=sum(state.expenses.filter(e=>e.person==='ilham'&&e.source==='individual').map(e=>e.amount));
-      const adelOut =sum(state.expenses.filter(e=>e.person==='adel' &&e.source==='individual').map(e=>e.amount));
-      const sharedOut=sum(state.expenses.filter(e=>e.source==='shared').map(e=>e.amount));
-      const ilhamInc=sum(state.incomes.filter(i=>i.person==='ilham').map(i=>i.amount));
-      const adelInc =sum(state.incomes.filter(i=>i.person==='adel' ).map(i=>i.amount));
-
-      const ilhamSaldo=state.ilhamInit - ilhamU - ilhamOut + ilhamInc;
-      const adelSaldo =state.adelInit  - adelU  - adelOut  + adelInc;
-      const sharedSaldo= (ilhamU+adelU) - sharedOut;
-      const grand=ilhamSaldo+adelSaldo+sharedSaldo;
-
-      ilhamBalanceEl.textContent=fmt(ilhamSaldo);
-      adelBalanceEl.textContent=fmt(adelSaldo);
-      sharedBalanceEl.textContent=fmt(sharedSaldo);
-      grandTotalEl.textContent=fmt(grand);
-
-      contribList.innerHTML=state.contribs.map(c=>`<div class="item"><span class="badge">Urunan</span><div>${c.person} - ${fmt(c.amount)} (${c.month})</div></div>`).join('');
-      expenseList.innerHTML=state.expenses.map(e=>`<div class="item"><span class="badge">${e.source}</span><div>${e.person} - ${fmt(e.amount)} (${e.date})</div></div>`).join('');
-      incomeList.innerHTML=state.incomes.map(i=>`<div class="item"><span class="badge">Income</span><div>${i.person} +${fmt(i.amount)} (${i.date})</div></div>`).join('');
-
-      const recent=[...state.contribs.map(x=>({...x,type:'U'})),...state.expenses.map(x=>({...x,type:'E'})),...state.incomes.map(x=>({...x,type:'I'}))].sort((a,b)=>b.createdAt?.toMillis()-a.createdAt?.toMillis()).slice(0,10);
-      recentList.innerHTML=recent.map(r=>{
-        if(r.type==='U')return `<div class="item"><span class="badge">Urunan</span><div>${r.person} - ${fmt(r.amount)}</div></div>`;
-        if(r.type==='E')return `<div class="item"><span class="badge">Out</span><div>${r.person} - ${fmt(r.amount)}</div></div>`;
-        return `<div class="item"><span class="badge">Income</span><div>${r.person} +${fmt(r.amount)}</div></div>`;
-      }).join('');
+  // Edit & Delete
+  async function deleteItem(type,id){
+    let col="";
+    if(type==="U") col="contributions";
+    if(type==="E") col="expenses";
+    if(type==="I") col="incomes";
+    if(col && confirm("Yakin mau hapus data ini?")){
+      await deleteDoc(doc(db,col,id));
     }
-    function sum(a){return a.reduce((x,y)=>x+(+y||0),0)}
-    incDate.value=today();expDate.value=today();contribMonth.value=today().slice(0,7);
+  }
+
+  async function editItem(type,id){
+    let col="";
+    if(type==="U") col="contributions";
+    if(type==="E") col="expenses";
+    if(type==="I") col="incomes";
+    if(!col) return;
+
+    const newAmount=prompt("Masukkan nominal baru:");
+    if(newAmount && !isNaN(newAmount)){
+      await updateDoc(doc(db,col,id),{amount:+newAmount});
+    }
+  }
+
+  // Render
+  function render(){
+    const ilhamU=sum(state.contribs.filter(c=>c.person==='ilham').map(c=>c.amount));
+    const adelU =sum(state.contribs.filter(c=>c.person==='adel').map(c=>c.amount));
+    const ilhamOut=sum(state.expenses.filter(e=>e.person==='ilham'&&e.source==='individual').map(e=>e.amount));
+    const adelOut =sum(state.expenses.filter(e=>e.person==='adel' &&e.source==='individual').map(e=>e.amount));
+    const sharedOut=sum(state.expenses.filter(e=>e.source==='shared').map(e=>e.amount));
+    const ilhamInc=sum(state.incomes.filter(i=>i.person==='ilham').map(i=>i.amount));
+    const adelInc =sum(state.incomes.filter(i=>i.person==='adel' ).map(i=>i.amount));
+
+    const ilhamSaldo=state.ilhamInit - ilhamU - ilhamOut + ilhamInc;
+    const adelSaldo =state.adelInit  - adelU  - adelOut  + adelInc;
+    const sharedSaldo= (ilhamU+adelU) - sharedOut;
+    const grand=ilhamSaldo+adelSaldo+sharedSaldo;
+
+    ilhamBalanceEl.textContent=fmt(ilhamSaldo);
+    adelBalanceEl.textContent=fmt(adelSaldo);
+    sharedBalanceEl.textContent=fmt(sharedSaldo);
+    grandTotalEl.textContent=fmt(grand);
+
+    // Contributions
+    contribList.innerHTML = state.contribs.map(c => `
+      <div class="item">
+        <div class="item-header">
+          <span class="badge">Urunan</span>
+          <div class="label">${c.person} - ${fmt(c.amount)} (${c.month})</div>
+        </div>
+        ${c.note ? `<p class="note">${c.note}</p>` : ""}
+        <div class="item-footer">
+          <button onclick="editItem('U','${c.id}')" class="btn-action">✏️ Edit</button>
+          <button onclick="deleteItem('U','${c.id}')" class="btn-action">🗑️ Hapus</button>
+        </div>
+      </div>
+    `).join("");
+
+    // Expenses
+    expenseList.innerHTML = state.expenses.map(e => `
+      <div class="item">
+        <div class="item-header">
+          <span class="badge">${e.source}</span>
+          <div class="label">${e.person} - ${fmt(e.amount)} (${e.date})</div>
+        </div>
+        ${e.note ? `<p class="note">${e.note}</p>` : ""}
+        <div class="item-footer">
+          <button onclick="editItem('E','${e.id}')" class="btn-action">✏️ Edit</button>
+          <button onclick="deleteItem('E','${e.id}')" class="btn-action">🗑️ Hapus</button>
+        </div>
+      </div>
+    `).join("");
+
+    // Incomes
+    incomeList.innerHTML = state.incomes.map(i => `
+      <div class="item">
+        <div class="item-header">
+          <span class="badge">Income</span>
+          <div class="label">${i.person} +${fmt(i.amount)} (${i.date})</div>
+        </div>
+        ${i.note ? `<p class="note">${i.note}</p>` : ""}
+        <div class="item-footer">
+          <button onclick="editItem('I','${i.id}')" class="btn-action">✏️ Edit</button>
+          <button onclick="deleteItem('I','${i.id}')" class="btn-action">🗑️ Hapus</button>
+        </div>
+      </div>
+    `).join("");
+
+    // Recent
+    const recent = [
+      ...state.contribs.map(x => ({ ...x, type: 'U' })),
+      ...state.expenses.map(x => ({ ...x, type: 'E' })),
+      ...state.incomes.map(x => ({ ...x, type: 'I' }))
+    ].sort((a, b) => b.createdAt?.toMillis() - a.createdAt?.toMillis())
+    .slice(0, 10);
+
+    recentList.innerHTML = recent.map(r => {
+      let badge = "", label = "";
+      if (r.type === 'U') { badge = "Urunan"; label = `${r.person} - ${fmt(r.amount)}`; }
+      if (r.type === 'E') { badge = "Out"; label = `${r.person} - ${fmt(r.amount)}`; }
+      if (r.type === 'I') { badge = "Income"; label = `${r.person} +${fmt(r.amount)}`; }
+
+      return `
+        <div class="item">
+          <div class="item-header">
+            <span class="badge">${badge}</span>
+            <div class="label">${label}</div>
+          </div>
+          ${r.note ? `<p class="note">${r.note}</p>` : ""}
+          <div class="item-footer">
+            <button onclick="editItem('${r.type}','${r.id}')" class="btn-action">✏️ Edit</button>
+            <button onclick="deleteItem('${r.type}','${r.id}')" class="btn-action">🗑️ Hapus</button>
+          </div>
+        </div>
+      `;
+    }).join("");
+
+  }
+
+  function sum(a){return a.reduce((x,y)=>x+(+y||0),0)}
+  incDate.value=today();expDate.value=today();contribMonth.value=today().slice(0,7);
+
+  // Supaya fungsi bisa dipanggil dari HTML
+  window.deleteItem=deleteItem;
+  window.editItem=editItem;
   </script>
+
+
 </body>
 </html>
