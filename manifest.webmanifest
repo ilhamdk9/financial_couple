@@ -1,0 +1,16 @@
+{
+  "name": "Financial Couple — Ilham ❤️ Adel",
+  "short_name": "Financial Couple",
+  "description": "Catat urunan, pengeluaran, dan income berdua. Romantis & rapi.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#fff7f9",
+  "theme_color": "#ff4d6d",
+  "icons": [
+    { "src": "/icons/heart.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any" },
+    { "src": "/icons/heart-maskable.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "maskable" },
+    { "src": "/icons/heart-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any maskable" },
+    { "src": "/icons/heart-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any maskable" }
+  ]
+}
