@@ -1,615 +1,874 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Financial Couple — Ilham ❤️ Adel</title>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
-  <link rel="manifest" href="/manifest.webmanifest">
-  <meta name="theme-color" content="#ff4d6d">
-  <link rel="icon" href="icons/heart-192.png" type="image/png">
-  <link rel="apple-touch-icon" href="icons/heart-192.png">
-  <style>
-    :root {
-      --pink: #ff4d6d;
-      --rose: #ffe0e6;
-      --cream: #fff7f9;
-      --ink: #2a2a2a;
-      --muted: #6b6b6b;
-      --radius: 1rem;
-    }
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Financial Couple — Ilham ❤️ Adel</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="manifest" href="/manifest.webmanifest">
+    <meta name="theme-color" content="#ff4d6d">
+    <link rel="icon" href="icons/heart-192.png" type="image/png">
+    <link rel="apple-touch-icon" href="icons/heart-192.png">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.2/dist/chart.umd.min.js"></script>
+    <style>
+        :root {
+            --pink: #ff4d6d;
+            --rose: #ffe0e6;
+            --cream: #fff7f9;
+            --ink: #2a2a2a;
+            --muted: #6b6b6b;
+            --radius: 1rem;
+        }
 
-    * {
-      box-sizing: border-box;
-    }
+        * {
+            box-sizing: border-box;
+        }
 
-    body {
-      margin: 0;
-      font-family: Poppins, sans-serif;
-      color: var(--ink);
-      background: linear-gradient(180deg, var(--cream), #fff);
-      line-height: 1.5;
-    }
+        body {
+            margin: 0;
+            font-family: Poppins, sans-serif;
+            color: var(--ink);
+            background: linear-gradient(180deg, var(--cream), #fff);
+            line-height: 1.5;
+        }
 
-    header {
-      position: sticky;
-      top: 0;
-      background: #fff9;
-      border-bottom: 1px solid #ffd6e0;
-      backdrop-filter: blur(8px);
-      z-index: 10;
-    }
+        header {
+            position: sticky;
+            top: 0;
+            background: #ff4d6d; 
+            color: white; 
+            border-bottom: 1px solid #ffd6e0;
+            backdrop-filter: blur(8px);
+            z-index: 10;
+            padding: 1rem; 
+        }
 
-    .wrap {
-      max-width: 1100px;
-      margin: 0 auto;
-      padding: 1rem;
-    }
+        header .wrap {
+            display: flex; 
+            justify-content: space-between; 
+            align-items: center; 
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 1rem; 
+        }
 
-    h1 {
-      margin: 0;
-      font-size: clamp(1rem, 2vw, 1.5rem);
-    }
+        .wrap {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 1rem;
+        }
 
-    .grid {
-      display: grid;
-      gap: 1rem;
-    }
+        h1 {
+            margin: 0;
+            font-size: clamp(1rem, 2vw, 1.5rem);
+        }
 
-    /* grid otomatis responsif */
-    @media (min-width: 780px) {
-      .grid.two-col {
-        grid-template-columns: 1.2fr 1fr;
-      }
-    }
+        .grid {
+            display: grid;
+            gap: 1rem;
+        }
 
-    .card {
-      background: #fff;
-      border: 1px solid #ffd6e0;
-      border-radius: var(--radius);
-      box-shadow: 0 8px 20px -10px #ff4d6d44;
-    }
+        /* grid otomatis responsif */
+        @media (min-width: 780px) {
+            .grid.two-col {
+                grid-template-columns: 1.2fr 1fr;
+            }
+            .main-grid {
+                grid-template-columns: 1.2fr 1fr;
+            }
+        }
 
-    .card .head {
-      padding: 0.75rem 1rem;
-      border-bottom: 1px solid #ffd6e0;
-      background: #fff7fa;
-      border-top-left-radius: var(--radius);
-      border-top-right-radius: var(--radius);
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      flex-wrap: wrap;
-      gap: .5rem;
-    }
+        .card {
+            background: #fff;
+            border: 1px solid #ffd6e0;
+            border-radius: var(--radius);
+            box-shadow: 0 8px 20px -10px #ff4d6d44;
+        }
 
-    .card .body {
-      padding: 1rem;
-    }
+        .card .head {
+            padding: 0.75rem 1rem;
+            border-bottom: 1px solid #ffd6e0;
+            background: #fff7fa;
+            border-top-left-radius: var(--radius);
+            border-top-right-radius: var(--radius);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: .5rem;
+        }
 
-    form {
-      display: grid;
-      gap: .75rem;
-    }
+        .card .body {
+            padding: 1rem;
+        }
 
-    .row {
-      display: grid;
-      gap: .75rem;
-    }
+        form {
+            display: grid;
+            gap: .75rem;
+        }
 
-    header {
-      background: #ff4d6d;
-      color: white;
-      padding: 1rem;
-    }
-    header .wrap {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-    .hamburger {
-      font-size: 1.5rem;
-      background: none;
-      border: none;
-      color: white;
-      cursor: pointer;
-    }
+        .row {
+            display: grid;
+            gap: .75rem;
+        }
 
-    #sidebar {
-      position: fixed;
-      top: 0;
-      left: -250px;
-      width: 220px;
-      height: 100%;
-      background: #ffe0e6;
-      box-shadow: 2px 0 6px rgba(0,0,0,0.2);
-      transition: left 0.3s ease;
-      padding-top: 4rem;
-    }
-    #sidebar.active {
-      left: 0;
-    }
-    #sidebar ul {
-      list-style: none;
-      padding: 0;
-    }
-    #sidebar ul li {
-      padding: 1rem;
-    }
-    #sidebar ul li a {
-      text-decoration: none;
-      color: #333;
-      font-weight: 600;
-    }
+        /* kolom responsif */
+        @media (min-width: 560px) {
+            .row.two {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .row.three {
+                grid-template-columns: repeat(3, 1fr);
+            }
+
+            .row.four {
+                grid-template-columns: repeat(4, 1fr);
+            }
+        }
+
+        input,
+        select,
+        button {
+            padding: .65rem .75rem;
+            border-radius: .75rem;
+            border: 1px solid #ffd6e0;
+            font: inherit;
+            width: 100%;
+        }
+
+        button {
+            cursor: pointer;
+            background: var(--pink);
+            color: #fff;
+            font-weight: 700;
+            border: 0;
+            transition: background .2s;
+            margin-bottom: 10px;
+            margin-top: 10px;
+        }
+
+        button:hover {
+            background: #e53b5d;
+        }
+
+        .muted-btn {
+            background: #fff;
+            color: var(--pink);
+            border: 1px solid #ffbccc;
+        }
+
+        .list {
+            display: grid;
+            gap: .6rem;
+            overflow: auto;
+        }
+
+        .badge {
+            padding: 2px 8px;
+            border-radius: 8px;
+            background: #fff0f4;
+            border: 1px solid #ffbccc;
+            font-size: .7rem;
+            color: #c2183e;
+            font-weight: 600;
+        }
+
+        .amount {
+            font-weight: 700;
+            font-size: 1.25rem;
+            color: var(--pink);
+        }
+
+        .small {
+            font-size: .8rem;
+            color: #777;
+        }
+
+        .main-grid {
+            display: grid;
+            gap: 1rem;
+        }
+
+        .item {
+            padding: 1rem;
+            border: 1px solid #ffd6e0;
+            border-radius: 1rem;
+            background: #fff;
+            margin-bottom: 0;
+            box-shadow: 0 4px 10px -6px rgba(255, 77, 109, .3);
+        }
+
+        .item-header {
+            display: flex;
+            flex-direction: column;
+            gap: .25rem;
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 3px 10px;
+            border-radius: 999px;
+            background: #ffe0eb;
+            font-size: .75rem;
+            color: #ff4d6d;
+            font-weight: 600;
+            margin-bottom: .3rem;
+            width: max-content;
+        }
+        .badge.expense { background: #fff0f4; color: #ff4d6d; }
+        .badge.income { background: #e0fff3; color: #18a36d; }
+        .badge.contribution { background: #fff0e0; color: #a36d18; }
+        .badge.category { background: #f0f0ff; color: #6d4dff; }
 
 
-    /* kolom responsif */
-    @media (min-width: 560px) {
-      .row.two {
-        grid-template-columns: repeat(2, 1fr);
-      }
+        .label {
+            font-weight: 600;
+            color: #333;
+        }
 
-      .row.three {
-        grid-template-columns: repeat(3, 1fr);
-      }
+        .note {
+            font-size: .85rem;
+            margin: .4rem 0;
+            color: #666;
+            font-style: italic;
+        }
 
-      .row.four {
-        grid-template-columns: repeat(4, 1fr);
-      }
-    }
+        .item-footer {
+            margin-top: .6rem;
+            display: flex;
+            justify-content: flex-end;
+            gap: .5rem;
+        }
 
-    input,
-    select,
-    button {
-      padding: .65rem .75rem;
-      border-radius: .75rem;
-      border: 1px solid #ffd6e0;
-      font: inherit;
-      width: 100%;
-    }
+        .btn-action {
+            padding: .35rem .7rem;
+            border: none;
+            border-radius: .5rem;
+            font-size: .85rem;
+            cursor: pointer;
+            background: #ffe0eb;
+            color: #ff4d6d;
+            transition: all .2s ease;
+        }
 
-    button {
-      cursor: pointer;
-      background: var(--pink);
-      color: #fff;
-      font-weight: 700;
-      border: 0;
-      transition: background .2s;
-      margin-bottom: 10px;
-      margin-top: 10px;
-    }
+        .btn-action:hover {
+            background: #ff4d6d;
+            color: #fff;
+        }
 
-    button:hover {
-      background: #e53b5d;
-    }
+        /* Gaya Tabel */
+        .full-history-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: .9rem;
+        }
 
-    .muted-btn {
-      background: #fff;
-      color: var(--pink);
-      border: 1px solid #ffbccc;
-    }
+        .full-history-table th, .full-history-table td {
+            padding: 0.75rem 0.5rem;
+            border-bottom: 1px solid #ffd6e0;
+            text-align: left;
+        }
 
-    .list {
-      display: grid;
-      gap: .6rem;
-      max-height: 250px;
-      overflow: auto;
-    }
+        .full-history-table th {
+            background-color: #ffe0e6;
+            font-weight: 600;
+            position: sticky;
+            top: 0;
+            z-index: 1;
+        }
+        
+        /* Gaya untuk Konten Kanan */
+        .right-section {
+            display: grid;
+            gap: 18px;
+        }
+        
+        /* Gaya untuk container diagram agar tidak terlalu besar */
+        .chart-container {
+            position: relative;
+            height: 35vh;
+            width: 100%;
+        }
+        /* Tambah kolom chart untuk analisis pengeluaran */
+        @media (min-width: 560px) {
+            .expense-analysis-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
 
-    .badge {
-      padding: 2px 8px;
-      border-radius: 8px;
-      background: #fff0f4;
-      border: 1px solid #ffbccc;
-      font-size: .7rem;
-      color: #c2183e;
-      font-weight: 600;
-    }
-
-    .amount {
-      font-weight: 700;
-    }
-
-    .small {
-      font-size: .8rem;
-      color: #777;
-    }
-
-    /* agar konten utama 2 kolom hanya di layar lebar */
-    .main-grid {
-      display: grid;
-      gap: 1rem;
-    }
-
-    .item {
-      padding: 1rem;
-      border: 1px solid #ffd6e0;
-      border-radius: 1rem;
-      background: #fff;
-      margin-bottom: 1rem;
-      box-shadow: 0 4px 10px -6px rgba(255, 77, 109, .3);
-    }
-
-    .item-header {
-      display: flex;
-      flex-direction: column;
-      gap: .25rem;
-    }
-
-    .badge {
-      display: inline-block;
-      padding: 3px 10px;
-      border-radius: 999px;
-      background: #ffe0eb;
-      font-size: .75rem;
-      color: #ff4d6d;
-      font-weight: 600;
-      margin-bottom: .3rem;
-      width: max-content;
-    }
-
-    .label {
-      font-weight: 600;
-      color: #333;
-    }
-
-    .note {
-      font-size: .85rem;
-      margin: .4rem 0;
-      color: #666;
-      font-style: italic;
-    }
-
-    .item-footer {
-      margin-top: .6rem;
-      display: flex;
-      justify-content: flex-end;
-      gap: .5rem;
-    }
-
-    .btn-action {
-      padding: .35rem .7rem;
-      border: none;
-      border-radius: .5rem;
-      font-size: .85rem;
-      cursor: pointer;
-      background: #ffe0eb;
-      color: #ff4d6d;
-      transition: all .2s ease;
-    }
-
-    .btn-action:hover {
-      background: #ff4d6d;
-      color: #fff;
-    }
-
-    @media (min-width: 780px) {
-      .main-grid {
-        grid-template-columns: 1.2fr 1fr;
-      }
-    }
-  </style>
+    </style>
 </head>
 <script>
 if ('serviceWorker' in navigator) {
-  navigator.serviceWorker.register('/sw.js');
+    navigator.serviceWorker.register('/sw.js');
 }
 
-// opsional: tombol install
 window.addEventListener('beforeinstallprompt', (e) => {
-  e.preventDefault();
-  window.deferredPrompt = e;
-  const btn = document.getElementById('installPWA');
-  if (btn) btn.style.display = 'inline-flex';
+    e.preventDefault();
+    window.deferredPrompt = e;
+    const btn = document.getElementById('installPWA');
+    if (btn) btn.style.display = 'inline-flex';
 });
 
 async function installPWA() {
-  const prompt = window.deferredPrompt;
-  if (!prompt) return;
-  prompt.prompt();
-  await prompt.userChoice;
-  window.deferredPrompt = null;
-  const btn = document.getElementById('installPWA');
-  if (btn) btn.style.display = 'none';
+    const prompt = window.deferredPrompt;
+    if (!prompt) return;
+    prompt.prompt();
+    await prompt.userChoice;
+    window.deferredPrompt = null;
+    const btn = document.getElementById('installPWA');
+    if (btn) btn.style.display = 'none';
 }
 </script>
 
 <script>
-  document.addEventListener("DOMContentLoaded", () => {
-    const menuBtn = document.getElementById("menu-btn");
-    const sidebar = document.getElementById("sidebar");
+    document.addEventListener("DOMContentLoaded", () => {
+        const menuBtn = document.getElementById("menu-btn");
+        const sidebar = document.getElementById("sidebar");
 
-    menuBtn.addEventListener("click", () => {
-      sidebar.classList.toggle("active");
+        if (menuBtn && sidebar) {
+            menuBtn.addEventListener("click", () => {
+                sidebar.classList.toggle("active");
+            });
+        }
     });
-  });
 </script>
 
-<!-- contoh tombol (opsional) -->
 <button id="installPWA" onclick="installPWA()" style="display:none"
-  class="muted-btn" aria-label="Install App">⬇️ Install App</button>
+    class="muted-btn" aria-label="Install App">⬇️ Install App</button>
 <body>
-  <header>
-    <div class="wrap">
-      <h1>Financial</h1>
-    </div>
-  </header>
-
-  <main class="wrap">
-    <!-- Ringkasan -->
-    <section class="card">
-      <div class="head"><b>Ringkasan Saldo</b></div>
-      <div class="body">
-        <div class="grid" style="grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px">
-          <div><div>Ilham</div><div id="ilhamBalance" class="amount">Rp 0</div></div>
-          <div><div>Adel</div><div id="adelBalance" class="amount">Rp 0</div></div>
-          <div><div>Bersama</div><div id="sharedBalance" class="amount">Rp 0</div></div>
-          <div><div>Total</div><div id="grandTotal" class="amount">Rp 0</div></div>
+    <header>
+        <div class="wrap">
+            <h1>Financial Couple — Ilham ❤️ Adel</h1>
         </div>
-      </div>
-    </section>
+    </header>
 
-    <div class="grid" style="margin-top:18px">
-      <!-- Kiri -->
-      <section class="grid" style="gap:18px">
-        <!-- Urunan -->
-        <div class="card">
-          <div class="head"><b>Urunan Bulanan</b></div>
-          <div class="body">
-            <form id="contribForm">
-              <div class="row.three row">
-                <select id="contribPerson" required>
-                  <option value="ilham">Ilham</option>
-                  <option value="adel">Adel</option>
-                </select>
-                <input id="contribMonth" type="month" required/>
-                <input id="contribAmount" type="number" placeholder="700000" required/>
-              </div>
-              <button type="submit">+ Tambah Urunan</button>
-            </form>
-            <div class="list" id="contribList"></div>
-          </div>
+    <main class="wrap">
+        <section class="card">
+            <div class="head"><b>Ringkasan Saldo</b></div>
+            <div class="body">
+                <div class="grid" style="grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px">
+                    <div><div>Ilham</div><div id="ilhamBalance" class="amount">Rp 0</div></div>
+                    <div><div>Adel</div><div id="adelBalance" class="amount">Rp 0</div></div>
+                    <div><div>Bersama</div><div id="sharedBalance" class="amount">Rp 0</div></div>
+                    <div><div>Total</div><div id="grandTotal" class="amount">Rp 0</div></div>
+                </div>
+            </div>
+        </section>
+
+        <div class="main-grid" style="margin-top:18px">
+            <section class="grid" style="gap:18px">
+                <div class="card">
+                    <div class="head"><b>Urunan Bulanan</b></div>
+                    <div class="body">
+                        <form id="contribForm">
+                            <div class="row.three row">
+                                <select id="contribPerson" required>
+                                    <option value="ilham">Ilham</option>
+                                    <option value="adel">Adel</option>
+                                </select>
+                                <input id="contribMonth" type="month" required/>
+                                <input id="contribAmount" type="number" placeholder="700000" required/>
+                            </div>
+                            <button type="submit">+ Tambah Urunan</button>
+                        </form>
+                        <div class="list" id="contribList" style="max-height: 250px;"></div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="head"><b>Pengeluaran Harian</b></div>
+                    <div class="body">
+                        <form id="expenseForm">
+                            <div class="row.four row">
+                                <select id="expPerson" required><option value="ilham">Ilham</option><option value="adel">Adel</option></select>
+                                <select id="expSource" required><option value="individual">Masing-masing</option><option value="shared">Bersama</option></select>
+                                <input id="expAmount" type="number" placeholder="120000" required/>
+                                <input id="expDate" type="date" required/>
+                            </div>
+                            <select id="expCategory" required>
+                                <option value="">Pilih Kategori</option>
+                                <option value="makanan">Makanan & Minuman</option>
+                                <option value="transportasi">Transportasi</option>
+                                <option value="kerja">Kebutuhan Kerja</option>
+                                <option value="vape">Vape & Rokok</option>
+                                <option value="barang_pribadi">Barang Pribadi (Kosmetik, dll)</option>
+                                <option value="tagihan">Tagihan (Listrik, Internet, dll)</option>
+                                <option value="belanja_rumah">Belanja Kebutuhan Rumah</option>
+                                <option value="hiburan">Hiburan & Rekreasi</option>
+                                <option value="lain_lain">Lain-lain</option>
+                            </select>
+                            
+                            <input id="expNote" type="text" placeholder="Catatan (opsional)"/>
+                            <button type="submit">+ Catat Pengeluaran</button>
+                        </form>
+                        <div class="list" id="expenseList" style="max-height: 250px;"></div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="head"><b>Penambahan Uang</b> <span class="small">(contoh: gaji bulanan)</span></div>
+                    <div class="body">
+                        <form id="incomeForm">
+                            <div class="row.three row">
+                                <select id="incPerson" required><option value="ilham">Ilham</option><option value="adel">Adel</option></select>
+                                <input id="incAmount" type="number" placeholder="5000000" required/>
+                                <input id="incDate" type="date" required/>
+                            </div>
+                            <input id="incNote" type="text" placeholder="Catatan (opsional)"/>
+                            <button type="submit">+ Tambah Uang</button>
+                        </form>
+                        <div class="list" id="incomeList" style="max-height: 250px;"></div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="right-section">
+                <div class="card"><div class="head"><b>Riwayat Terbaru</b></div><div class="body"><div class="list" id="recentList"></div></div></div>
+                
+                <div class="grid expense-analysis-grid">
+                    <div class="card">
+                        <div class="head"><b>Pengeluaran per Orang & Sumber</b></div>
+                        <div class="body">
+                            <div class="chart-container">
+                                <canvas id="expenseChart"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="head"><b>Alokasi Dana per Kategori</b></div>
+                        <div class="body">
+                            <div class="chart-container">
+                                <canvas id="categoryChart"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </section>
         </div>
+        
+        <section class="card" style="margin-top: 18px;">
+            <div class="head"><b>Riwayat Transaksi Lengkap</b></div>
+            <div class="body">
+                <div style="overflow-x: auto; max-height: 400px;">
+                    <table class="full-history-table">
+                        <thead>
+                            <tr>
+                                <th>Tgl/Bln</th>
+                                <th>Jenis</th>
+                                <th>Oleh</th>
+                                <th>Sumber</th>
+                                <th>Kategori</th>
+                                <th>Keterangan</th>
+                                <th>Nominal</th>
+                                <th>Aksi</th>
+                            </tr>
+                        </thead>
+                        <tbody id="fullHistoryTableBody">
+                            </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
 
-        <!-- Pengeluaran -->
-        <div class="card">
-          <div class="head"><b>Pengeluaran Harian</b></div>
-          <div class="body">
-            <form id="expenseForm">
-              <div class="row.four row">
-                <select id="expPerson" required><option value="ilham">Ilham</option><option value="adel">Adel</option></select>
-                <select id="expSource" required><option value="individual">Masing-masing</option><option value="shared">Bersama</option></select>
-                <input id="expAmount" type="number" placeholder="120000" required/>
-                <input id="expDate" type="date" required/>
-              </div>
-              <input id="expNote" type="text" placeholder="Catatan (opsional)"/>
-              <button type="submit">+ Catat Pengeluaran</button>
-            </form>
-            <div class="list" id="expenseList"></div>
-          </div>
-        </div>
+    </main>
+    <script type="module">
+    import { 
+        initializeApp 
+    } from "https://www.gstatic.com/firebasejs/10.11.0/firebase-app.js";
+    import { 
+        getFirestore, collection, addDoc, doc, setDoc, deleteDoc, updateDoc, 
+        onSnapshot, orderBy, query, serverTimestamp 
+    } from "https://www.gstatic.com/firebasejs/10.11.0/firebase-firestore.js";
 
-        <!-- Penambahan Uang -->
-        <div class="card">
-          <div class="head"><b>Penambahan Uang</b> <span class="small">(contoh: gaji bulanan)</span></div>
-          <div class="body">
-            <form id="incomeForm">
-              <div class="row.three row">
-                <select id="incPerson" required><option value="ilham">Ilham</option><option value="adel">Adel</option></select>
-                <input id="incAmount" type="number" placeholder="5000000" required/>
-                <input id="incDate" type="date" required/>
-              </div>
-              <input id="incNote" type="text" placeholder="Catatan (opsional)"/>
-              <button type="submit">+ Tambah Uang</button>
-            </form>
-            <div class="list" id="incomeList"></div>
-          </div>
-        </div>
-      </section>
+    // Inisialisasi Firebase
+    const firebaseConfig = {
+        apiKey: "AIzaSyCX2a-f1UK7iVC-TlmE2iekJMwIs5ccDQU",
+        authDomain: "financial-couple-dc3cf.firebaseapp.com",
+        projectId: "financial-couple-dc3cf",
+        storageBucket: "financial-couple-dc3cf.firebasestorage.app",
+        messagingSenderId: "533254877895",
+        appId: "1:533254877895:web:52b21c324bcf20f46704e2",
+        measurementId: "G-CJ8VGQGPK0"
+    };
+    const app = initializeApp(firebaseConfig);
+    const db = getFirestore(app);
 
-      <!-- Kanan -->
-      <section class="grid" style="gap:18px">
-        <div class="card"><div class="head"><b>Riwayat</b></div><div class="body"><div class="list" id="recentList"></div></div></div>
-      </section>
-    </div>
-  </main>
-  <script type="module">
-  import { 
-    initializeApp 
-  } from "https://www.gstatic.com/firebasejs/10.11.0/firebase-app.js";
-  import { 
-    getFirestore, collection, addDoc, doc, setDoc, deleteDoc, updateDoc, 
-    onSnapshot, orderBy, query, serverTimestamp 
-  } from "https://www.gstatic.com/firebasejs/10.11.0/firebase-firestore.js";
+    const DEFAULT_ILHAM=4636953, DEFAULT_ADEL=14010326;
+    const fmt = n=>new Intl.NumberFormat('id-ID',{style:'currency',currency:'IDR',maximumFractionDigits:0}).format(n||0);
+    const today=()=>new Date().toISOString().slice(0,10);
 
-  const firebaseConfig = {
-    apiKey: "AIzaSyCX2a-f1UK7iVC-TlmE2iekJMwIs5ccDQU",
-    authDomain: "financial-couple-dc3cf.firebaseapp.com",
-    projectId: "financial-couple-dc3cf",
-    storageBucket: "financial-couple-dc3cf.firebasestorage.app",
-    messagingSenderId: "533254877895",
-    appId: "1:533254877895:web:52b21c324bcf20f46704e2",
-    measurementId: "G-CJ8VGQGPK0"
-  };
-  const app = initializeApp(firebaseConfig);
-  const db = getFirestore(app);
+    // Elements
+    const ilhamBalanceEl=document.getElementById('ilhamBalance');
+    const adelBalanceEl=document.getElementById('adelBalance');
+    const sharedBalanceEl=document.getElementById('sharedBalance');
+    const grandTotalEl=document.getElementById('grandTotal');
+    const contribList=document.getElementById('contribList');
+    const expenseList=document.getElementById('expenseList');
+    const incomeList=document.getElementById('incomeList');
+    const recentList=document.getElementById('recentList');
+    const fullHistoryTableBody=document.getElementById('fullHistoryTableBody');
+    const expenseChartCanvas = document.getElementById('expenseChart');
+    const categoryChartCanvas = document.getElementById('categoryChart'); // Canvas baru
+    let expenseChartInstance; 
+    let categoryChartInstance; // Instance chart baru
 
-  const DEFAULT_ILHAM=4636953, DEFAULT_ADEL=14010326;
-  const fmt = n=>new Intl.NumberFormat('id-ID',{style:'currency',currency:'IDR',maximumFractionDigits:0}).format(n||0);
-  const today=()=>new Date().toISOString().slice(0,10);
+    // State
+    let state={ilhamInit:DEFAULT_ILHAM, adelInit:DEFAULT_ADEL, contribs:[], expenses:[], incomes:[]};
 
-  // Elements
-  const ilhamBalanceEl=document.getElementById('ilhamBalance');
-  const adelBalanceEl=document.getElementById('adelBalance');
-  const sharedBalanceEl=document.getElementById('sharedBalance');
-  const grandTotalEl=document.getElementById('grandTotal');
-  const contribList=document.getElementById('contribList');
-  const expenseList=document.getElementById('expenseList');
-  const incomeList=document.getElementById('incomeList');
-  const recentList=document.getElementById('recentList');
+    // Helper untuk mengubah key kategori menjadi teks yang indah
+    const formatCategoryDisplay = (key) => {
+        if (!key) return 'Lain-lain';
+        return key.replace(/_/g, ' ').replace(/\b\w/g, l => l.toUpperCase());
+    };
+    
+    // Warna untuk Chart Kategori (gunakan warna yang berbeda untuk visualisasi yang lebih baik)
+    const CATEGORY_COLORS = [
+        '#FF6384', // Makanan
+        '#36A2EB', // Transportasi
+        '#FFCE56', // Kerja
+        '#4BC0C0', // Vape
+        '#9966FF', // Barang Pribadi
+        '#FF9F40', // Tagihan
+        '#4CAF50', // Belanja Rumah
+        '#E91E63', // Hiburan
+        '#AAAAAA', // Lain-lain
+        '#FFD700', // Gold
+        '#800080', // Purple
+    ];
 
-  // State
-  let state={ilhamInit:DEFAULT_ILHAM, adelInit:DEFAULT_ADEL, contribs:[], expenses:[], incomes:[]};
 
-  // Snapshot listeners
-  onSnapshot(doc(db,'meta','initialBalances'),snap=>{
-    if(snap.exists()){const d=snap.data();state.ilhamInit=d.ilham||DEFAULT_ILHAM;state.adelInit=d.adel||DEFAULT_ADEL;render();}
-  });
-  onSnapshot(query(collection(db,'contributions'),orderBy('createdAt','desc')),qs=>{
-    state.contribs=qs.docs.map(d=>({id:d.id,...d.data()}));render();
-  });
-  onSnapshot(query(collection(db,'expenses'),orderBy('createdAt','desc')),qs=>{
-    state.expenses=qs.docs.map(d=>({id:d.id,...d.data()}));render();
-  });
-  onSnapshot(query(collection(db,'incomes'),orderBy('createdAt','desc')),qs=>{
-    state.incomes=qs.docs.map(d=>({id:d.id,...d.data()}));render();
-  });
+    // Snapshot listeners
+    onSnapshot(doc(db,'meta','initialBalances'),snap=>{
+        if(snap.exists()){const d=snap.data();state.ilhamInit=d.ilham||DEFAULT_ILHAM;state.adelInit=d.adel||DEFAULT_ADEL;render();}
+    });
+    onSnapshot(query(collection(db,'contributions'),orderBy('createdAt','desc')),qs=>{
+        state.contribs=qs.docs.map(d=>({id:d.id, type: 'U', ...d.data()}));render();
+    });
+    onSnapshot(query(collection(db,'expenses'),orderBy('createdAt','desc')),qs=>{
+        state.expenses=qs.docs.map(d=>({id:d.id, type: 'E', ...d.data()}));render();
+    });
+    onSnapshot(query(collection(db,'incomes'),orderBy('createdAt','desc')),qs=>{
+        state.incomes=qs.docs.map(d=>({id:d.id, type: 'I', ...d.data()}));render();
+    });
 
-  // Forms
-  document.getElementById('contribForm').onsubmit=async e=>{
-    e.preventDefault();const person=contribPerson.value,month=contribMonth.value,amount=+contribAmount.value;
-    if(amount>0)await addDoc(collection(db,'contributions'),{person,month,amount,createdAt:serverTimestamp()});
-    contribAmount.value='';
-  };
-  document.getElementById('expenseForm').onsubmit=async e=>{
-    e.preventDefault();const person=expPerson.value,source=expSource.value,amount=+expAmount.value,date=expDate.value,note=expNote.value||'';
-    if(amount>0)await addDoc(collection(db,'expenses'),{person,source,amount,date,note,createdAt:serverTimestamp()});
-    expAmount.value='';expNote.value='';
-  };
-  document.getElementById('incomeForm').onsubmit=async e=>{
-    e.preventDefault();const person=incPerson.value,amount=+incAmount.value,date=incDate.value,note=incNote.value||'';
-    if(amount>0)await addDoc(collection(db,'incomes'),{person,amount,date,note,createdAt:serverTimestamp()});
-    incAmount.value='';incNote.value='';
-  };
+    // Forms
+    document.getElementById('contribForm').onsubmit=async e=>{
+        e.preventDefault();const person=contribPerson.value,month=contribMonth.value,amount=+contribAmount.value;
+        if(amount>0)await addDoc(collection(db,'contributions'),{person,month,amount,createdAt:serverTimestamp()});
+        contribAmount.value='';
+    };
+    document.getElementById('expenseForm').onsubmit=async e=>{
+        e.preventDefault();
+        const person=expPerson.value;
+        const source=expSource.value;
+        const amount=+expAmount.value;
+        const date=expDate.value;
+        const note=expNote.value||'';
+        // Ambil Kategori baru
+        const category=expCategory.value || 'lain_lain'; 
+        
+        if(amount>0)await addDoc(collection(db,'expenses'),{
+            person,
+            source,
+            amount,
+            date,
+            note,
+            category, // SIMPAN KATEGORI
+            createdAt:serverTimestamp()
+        });
+        expAmount.value='';expNote.value='';expCategory.value=''; // Reset form
+    };
+    document.getElementById('incomeForm').onsubmit=async e=>{
+        e.preventDefault();const person=incPerson.value,amount=+incAmount.value,date=incDate.value,note=incNote.value||'';
+        if(amount>0)await addDoc(collection(db,'incomes'),{person,amount,date,note,createdAt:serverTimestamp()});
+        incAmount.value='';incNote.value='';
+    };
 
-  // Edit & Delete
-  async function deleteItem(type,id){
-    let col="";
-    if(type==="U") col="contributions";
-    if(type==="E") col="expenses";
-    if(type==="I") col="incomes";
-    if(col && confirm("Yakin mau hapus data ini?")){
-      await deleteDoc(doc(db,col,id));
+    // Edit & Delete
+    async function deleteItem(type,id){
+        let col="";
+        if(type==="U") col="contributions";
+        if(type==="E") col="expenses";
+        if(type==="I") col="incomes";
+        if(col && confirm("Yakin mau hapus data ini?")){
+            await deleteDoc(doc(db,col,id));
+        }
     }
-  }
 
-  async function editItem(type,id){
-    let col="";
-    if(type==="U") col="contributions";
-    if(type==="E") col="expenses";
-    if(type==="I") col="incomes";
-    if(!col) return;
+    async function editItem(type,id){
+        let col="";
+        if(type==="U") col="contributions";
+        if(type==="E") col="expenses";
+        if(type==="I") col="incomes";
+        if(!col) return;
 
-    const newAmount=prompt("Masukkan nominal baru:");
-    if(newAmount && !isNaN(newAmount)){
-      await updateDoc(doc(db,col,id),{amount:+newAmount});
+        const newAmount=prompt("Masukkan nominal baru:");
+        if(newAmount && !isNaN(newAmount)){
+            await updateDoc(doc(db,col,id),{amount:+newAmount});
+        }
     }
-  }
+    
+    function getTimestamp(data) {
+        if (data.createdAt) {
+            return typeof data.createdAt.toMillis === 'function' ? data.createdAt.toMillis() : new Date(data.createdAt).getTime();
+        }
+        if (data.date) return new Date(data.date).getTime();
+        if (data.month) return new Date(data.month).getTime();
+        return 0;
+    }
 
-  // Render
-  function render(){
-    const ilhamU=sum(state.contribs.filter(c=>c.person==='ilham').map(c=>c.amount));
-    const adelU =sum(state.contribs.filter(c=>c.person==='adel').map(c=>c.amount));
-    const ilhamOut=sum(state.expenses.filter(e=>e.person==='ilham'&&e.source==='individual').map(e=>e.amount));
-    const adelOut =sum(state.expenses.filter(e=>e.person==='adel' &&e.source==='individual').map(e=>e.amount));
-    const sharedOut=sum(state.expenses.filter(e=>e.source==='shared').map(e=>e.amount));
-    const ilhamInc=sum(state.incomes.filter(i=>i.person==='ilham').map(i=>i.amount));
-    const adelInc =sum(state.incomes.filter(i=>i.person==='adel' ).map(i=>i.amount));
+    // Render
+    function render(){
+        // 1. Perhitungan Saldo
+        const ilhamU=sum(state.contribs.filter(c=>c.person==='ilham').map(c=>c.amount));
+        const adelU =sum(state.contribs.filter(c=>c.person==='adel').map(c=>c.amount));
+        const ilhamOut=sum(state.expenses.filter(e=>e.person==='ilham'&&e.source==='individual').map(e=>e.amount));
+        const adelOut =sum(state.expenses.filter(e=>e.person==='adel' &&e.source==='individual').map(e=>e.amount));
+        const sharedOut=sum(state.expenses.filter(e=>e.source==='shared').map(e=>e.amount));
+        const ilhamInc=sum(state.incomes.filter(i=>i.person==='ilham').map(i=>i.amount));
+        const adelInc =sum(state.incomes.filter(i=>i.person==='adel' ).map(i=>i.amount));
 
-    const ilhamSaldo=state.ilhamInit - ilhamU - ilhamOut + ilhamInc;
-    const adelSaldo =state.adelInit  - adelU  - adelOut  + adelInc;
-    const sharedSaldo= (ilhamU+adelU) - sharedOut;
-    const grand=ilhamSaldo+adelSaldo+sharedSaldo;
+        // Asumsi: Urunan adalah pengeluaran dari saldo awal untuk dana bersama.
+        const ilhamSaldo=state.ilhamInit - (ilhamU + ilhamOut) + ilhamInc; 
+        const adelSaldo =state.adelInit - (adelU + adelOut) + adelInc; 
+        const sharedSaldo= (ilhamU+adelU) - sharedOut; 
+        const grand=ilhamSaldo+adelSaldo+sharedSaldo;
 
-    ilhamBalanceEl.textContent=fmt(ilhamSaldo);
-    adelBalanceEl.textContent=fmt(adelSaldo);
-    sharedBalanceEl.textContent=fmt(sharedSaldo);
-    grandTotalEl.textContent=fmt(grand);
+        ilhamBalanceEl.textContent=fmt(ilhamSaldo);
+        adelBalanceEl.textContent=fmt(adelSaldo);
+        sharedBalanceEl.textContent=fmt(sharedSaldo);
+        grandTotalEl.textContent=fmt(grand);
 
-    // Contributions
-    contribList.innerHTML = state.contribs.map(c => `
-      <div class="item">
-        <div class="item-header">
-          <span class="badge">Urunan</span>
-          <div class="label">${c.person} - ${fmt(c.amount)} (${c.month})</div>
-        </div>
-        ${c.note ? `<p class="note">${c.note}</p>` : ""}
-        <div class="item-footer">
-          <button onclick="editItem('U','${c.id}')" class="btn-action">✏️ Edit</button>
-          <button onclick="deleteItem('U','${c.id}')" class="btn-action">🗑️ Hapus</button>
-        </div>
-      </div>
-    `).join("");
+        // 2. Render Lists (Pengeluaran diperbarui untuk Kategori)
+        contribList.innerHTML = state.contribs.map(c => `
+            <div class="item">
+                <div class="item-header">
+                    <span class="badge contribution">Urunan</span>
+                    <div class="label">${c.person} - ${fmt(c.amount)} (${c.month})</div>
+                </div>
+                ${c.note ? `<p class="note">${c.note}</p>` : ""}
+                <div class="item-footer">
+                    <button onclick="editItem('U','${c.id}')" class="btn-action">✏️ Edit</button>
+                    <button onclick="deleteItem('U','${c.id}')" class="btn-action">🗑️ Hapus</button>
+                </div>
+            </div>
+        `).join("");
 
-    // Expenses
-    expenseList.innerHTML = state.expenses.map(e => `
-      <div class="item">
-        <div class="item-header">
-          <span class="badge">${e.source}</span>
-          <div class="label">${e.person} - ${fmt(e.amount)} (${e.date})</div>
-        </div>
-        ${e.note ? `<p class="note">${e.note}</p>` : ""}
-        <div class="item-footer">
-          <button onclick="editItem('E','${e.id}')" class="btn-action">✏️ Edit</button>
-          <button onclick="deleteItem('E','${e.id}')" class="btn-action">🗑️ Hapus</button>
-        </div>
-      </div>
-    `).join("");
+        expenseList.innerHTML = state.expenses.map(e => `
+            <div class="item">
+                <div class="item-header">
+                    <span class="badge expense">${e.source === 'individual' ? 'Out Individu' : 'Out Bersama'}</span>
+                    <span class="badge category">${formatCategoryDisplay(e.category)}</span>
+                    <div class="label">${e.person} - ${fmt(e.amount)} (${e.date})</div>
+                </div>
+                ${e.note ? `<p class="note">${e.note}</p>` : ""}
+                <div class="item-footer">
+                    <button onclick="editItem('E','${e.id}')" class="btn-action">✏️ Edit</button>
+                    <button onclick="deleteItem('E','${e.id}')" class="btn-action">🗑️ Hapus</button>
+                </div>
+            </div>
+        `).join("");
 
-    // Incomes
-    incomeList.innerHTML = state.incomes.map(i => `
-      <div class="item">
-        <div class="item-header">
-          <span class="badge">Income</span>
-          <div class="label">${i.person} +${fmt(i.amount)} (${i.date})</div>
-        </div>
-        ${i.note ? `<p class="note">${i.note}</p>` : ""}
-        <div class="item-footer">
-          <button onclick="editItem('I','${i.id}')" class="btn-action">✏️ Edit</button>
-          <button onclick="deleteItem('I','${i.id}')" class="btn-action">🗑️ Hapus</button>
-        </div>
-      </div>
-    `).join("");
+        incomeList.innerHTML = state.incomes.map(i => `
+            <div class="item">
+                <div class="item-header">
+                    <span class="badge income">Income</span>
+                    <div class="label">${i.person} +${fmt(i.amount)} (${i.date})</div>
+                </div>
+                ${i.note ? `<p class="note">${i.note}</p>` : ""}
+                <div class="item-footer">
+                    <button onclick="editItem('I','${i.id}')" class="btn-action">✏️ Edit</button>
+                    <button onclick="deleteItem('I','${i.id}')" class="btn-action">🗑️ Hapus</button>
+                </div>
+            </div>
+        `).join("");
 
-    // Recent
-    const recent = [
-      ...state.contribs.map(x => ({ ...x, type: 'U' })),
-      ...state.expenses.map(x => ({ ...x, type: 'E' })),
-      ...state.incomes.map(x => ({ ...x, type: 'I' }))
-    ].sort((a, b) => b.createdAt?.toMillis() - a.createdAt?.toMillis())
-    .slice(0, 10);
+        // 3. Render Riwayat Terbaru
+        const recent = [
+            ...state.contribs.map(x => ({ ...x, type: 'U', badgeText: 'Urunan' })),
+            ...state.expenses.map(x => ({ ...x, type: 'E', badgeText: 'Out' })),
+            ...state.incomes.map(x => ({ ...x, type: 'I', badgeText: 'Income' }))
+        ].sort((a, b) => getTimestamp(b) - getTimestamp(a))
+        .slice(0, 5); 
 
-    recentList.innerHTML = recent.map(r => {
-      let badge = "", label = "";
-      if (r.type === 'U') { badge = "Urunan"; label = `${r.person} - ${fmt(r.amount)}`; }
-      if (r.type === 'E') { badge = "Out"; label = `${r.person} - ${fmt(r.amount)}`; }
-      if (r.type === 'I') { badge = "Income"; label = `${r.person} +${fmt(r.amount)}`; }
+        recentList.innerHTML = recent.map(r => {
+            let badgeClass = '';
+            let label = '';
+            let date = r.date || r.month || 'N/A';
+            let sign = r.type === 'I' ? '+' : '-';
+            let categoryBadge = r.type === 'E' ? `<span class="badge category">${formatCategoryDisplay(r.category)}</span>` : '';
 
-      return `
-        <div class="item">
-          <div class="item-header">
-            <span class="badge">${badge}</span>
-            <div class="label">${label}</div>
-          </div>
-          ${r.note ? `<p class="note">${r.note}</p>` : ""}
-          <div class="item-footer">
-            <button onclick="editItem('${r.type}','${r.id}')" class="btn-action">✏️ Edit</button>
-            <button onclick="deleteItem('${r.type}','${r.id}')" class="btn-action">🗑️ Hapus</button>
-          </div>
-        </div>
-      `;
-    }).join("");
+            if (r.type === 'U') { badgeClass = 'contribution'; label = `${r.person} ${sign}${fmt(r.amount)}`; }
+            if (r.type === 'E') { badgeClass = 'expense'; label = `${r.person} (${r.source === 'shared' ? 'Bersama' : 'Individu'}) ${sign}${fmt(r.amount)}`; }
+            if (r.type === 'I') { badgeClass = 'income'; label = `${r.person} ${sign}${fmt(r.amount)}`; }
 
-  }
+            return `
+                <div class="item">
+                    <div class="item-header">
+                        <span class="badge ${badgeClass}">${r.badgeText}</span>
+                        ${categoryBadge}
+                        <div class="label">${label} (${date})</div>
+                    </div>
+                    ${r.note ? `<p class="note">${r.note}</p>` : ""}
+                    <div class="item-footer">
+                        <button onclick="editItem('${r.type}','${r.id}')" class="btn-action">✏️ Edit</button>
+                        <button onclick="deleteItem('${r.type}','${r.id}')" class="btn-action">🗑️ Hapus</button>
+                    </div>
+                </div>
+            `;
+        }).join("");
 
-  function sum(a){return a.reduce((x,y)=>x+(+y||0),0)}
-  incDate.value=today();expDate.value=today();contribMonth.value=today().slice(0,7);
+        // 4. Render Riwayat Transaksi Lengkap (Tabel)
+        const allTransactions = [
+            ...state.contribs.map(x => ({ ...x, date: x.month || 'N/A', source: 'N/A', transactionType: 'Urunan', person: x.person, amount: x.amount, sign: '-', category: 'N/A', type: 'U' })),
+            ...state.expenses.map(x => ({ ...x, date: x.date, source: x.source, transactionType: 'Pengeluaran', person: x.person, amount: x.amount, sign: '-', category: x.category || 'lain_lain', type: 'E' })),
+            ...state.incomes.map(x => ({ ...x, date: x.date, source: 'N/A', transactionType: 'Pemasukan', person: x.person, amount: x.amount, sign: '+', category: 'N/A', type: 'I' }))
+        ].sort((a, b) => getTimestamp(b) - getTimestamp(a));
 
-  // Supaya fungsi bisa dipanggil dari HTML
-  window.deleteItem=deleteItem;
-  window.editItem=editItem;
-  </script>
+        fullHistoryTableBody.innerHTML = allTransactions.map(t => {
+            let badgeClass = t.transactionType === 'Urunan' ? 'contribution' : t.transactionType === 'Pengeluaran' ? 'expense' : 'income';
+            let sourceText = t.source === 'shared' ? 'Bersama' : t.source === 'individual' ? 'Individu' : 'N/A';
+            let categoryText = formatCategoryDisplay(t.category);
+            let dateText = t.date; 
+
+            return `
+                <tr>
+                    <td>${dateText}</td>
+                    <td><span class="badge ${badgeClass}">${t.transactionType}</span></td>
+                    <td>${t.person}</td>
+                    <td>${sourceText}</td>
+                    <td>${categoryText}</td>
+                    <td>${t.note || '-'}</td>
+                    <td>${t.sign}${fmt(t.amount)}</td>
+                    <td>
+                        <button onclick="editItem('${t.type}','${t.id}')" class="btn-action">✏️</button>
+                        <button onclick="deleteItem('${t.type}','${t.id}')" class="btn-action">🗑️</button>
+                    </td>
+                </tr>
+            `;
+        }).join("");
+
+        // 5. Render Diagram
+        renderExpenseChart();
+        renderCategoryChart(); // Panggil fungsi render chart kategori baru
+    }
+
+    // Fungsi untuk membuat atau mengupdate Chart Pengeluaran per Orang & Sumber
+    function renderExpenseChart() {
+        const expenseData = state.expenses.reduce((acc, expense) => {
+            const key = `${expense.person} (${expense.source === 'shared' ? 'Bersama' : 'Individu'})`;
+            acc[key] = (acc[key] || 0) + expense.amount;
+            return acc;
+        }, {});
+
+        const labels = Object.keys(expenseData);
+        const data = Object.values(expenseData);
+        const backgroundColors = [
+            'rgba(255, 99, 132, 0.7)', // Pink/Red
+            'rgba(54, 162, 235, 0.7)', // Blue
+            'rgba(255, 206, 86, 0.7)', // Yellow
+            'rgba(75, 192, 192, 0.7)', // Green
+        ];
+
+        const chartConfig = {
+            type: 'bar',
+            data: {
+                labels: labels,
+                datasets: [{
+                    label: 'Total Pengeluaran (Rp)',
+                    data: data,
+                    backgroundColor: backgroundColors.slice(0, labels.length),
+                    borderColor: backgroundColors.map(c => c.replace('0.7', '1')),
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        title: { display: true, text: 'Nominal (Rp)' },
+                        ticks: {
+                            callback: (value) => fmt(value).replace('Rp', '')
+                        }
+                    }
+                },
+                plugins: {
+                    legend: { display: false },
+                    tooltip: {
+                        callbacks: {
+                            label: (context) => `Total: ${fmt(context.parsed.y)}`
+                        }
+                    }
+                }
+            }
+        };
+
+        if (expenseChartInstance) {
+            expenseChartInstance.destroy();
+        }
+        expenseChartInstance = new Chart(expenseChartCanvas, chartConfig);
+    }
+    
+    // Fungsi baru untuk membuat atau mengupdate Chart Kategori (Donat)
+    function renderCategoryChart() {
+        const categoryTotals = state.expenses.reduce((acc, expense) => {
+            const cat = expense.category || 'lain_lain'; // Amankan data lama
+            acc[cat] = (acc[cat] || 0) + expense.amount;
+            return acc;
+        }, {});
+
+        const labels = Object.keys(categoryTotals).map(formatCategoryDisplay);
+        const data = Object.values(categoryTotals);
+
+        const chartConfig = {
+            type: 'doughnut',
+            data: {
+                labels: labels,
+                datasets: [{
+                    label: 'Alokasi Pengeluaran',
+                    data: data,
+                    backgroundColor: CATEGORY_COLORS.slice(0, labels.length),
+                    hoverOffset: 4
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        position: 'right', // Tampilkan legenda di kanan
+                    },
+                    tooltip: {
+                        callbacks: {
+                            label: (context) => {
+                                const total = context.dataset.data.reduce((a, b) => a + b, 0);
+                                const currentValue = context.parsed;
+                                const percentage = ((currentValue / total) * 100).toFixed(1) + '%';
+                                return `${context.label}: ${fmt(currentValue)} (${percentage})`;
+                            }
+                        }
+                    }
+                }
+            }
+        };
+
+        if (categoryChartInstance) {
+            categoryChartInstance.destroy();
+        }
+        categoryChartInstance = new Chart(categoryChartCanvas, chartConfig);
+    }
 
 
+    function sum(a){return a.reduce((x,y)=>x+(+y||0),0)}
+    incDate.value=today();expDate.value=today();contribMonth.value=today().slice(0,7);
+
+    window.deleteItem=deleteItem;
+    window.editItem=editItem;
+    </script>
 </body>
 </html>
