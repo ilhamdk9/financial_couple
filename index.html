@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="id">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -23,7 +24,11 @@
       --muted: #6b6b6b;
       --radius: 1rem;
     }
-    * { box-sizing: border-box; }
+
+    * {
+      box-sizing: border-box;
+    }
+
     body {
       margin: 0;
       font-family: Poppins, sans-serif;
@@ -40,11 +45,13 @@
       top: 0;
       z-index: 1001;
     }
+
     header .wrap {
       display: flex;
       justify-content: space-between;
       align-items: center;
     }
+
     header h1 {
       margin: 0;
       font-size: 1.2rem;
@@ -70,22 +77,28 @@
       height: 100%;
       background: #fff;
       border-right: 2px solid #ffd6e0;
-      box-shadow: 4px 0 12px rgba(0,0,0,.15);
+      box-shadow: 4px 0 12px rgba(0, 0, 0, .15);
       transition: left 0.3s ease;
       z-index: 1000;
     }
-    #sidebar.active { left: 0; }
+
+    #sidebar.active {
+      left: 0;
+    }
+
     #sidebar .sidebar-header {
       padding: 1rem;
       font-weight: 700;
       border-bottom: 1px solid #ffd6e0;
       background: #fff7fa;
     }
+
     #sidebar ul {
       list-style: none;
       margin: 0;
       padding: 0;
     }
+
     #sidebar ul li a {
       display: block;
       padding: 0.9rem 1.2rem;
@@ -94,6 +107,7 @@
       color: var(--ink);
       transition: background 0.2s;
     }
+
     #sidebar ul li a:hover {
       background: var(--rose);
       color: var(--pink);
@@ -106,25 +120,30 @@
       left: 0;
       right: 0;
       bottom: 0;
-      background: rgba(0,0,0,.4);
+      background: rgba(0, 0, 0, .4);
       display: none;
       z-index: 999;
     }
-    #overlay.show { display: block; }
+
+    #overlay.show {
+      display: block;
+    }
 
     /* Content */
     main {
       padding: 1.5rem;
     }
+
     .card {
       background: #fff;
       border-radius: var(--radius);
       padding: 1.5rem;
-      box-shadow: 0 4px 12px rgba(0,0,0,.08);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, .08);
       margin-bottom: 1rem;
     }
   </style>
 </head>
+
 <body>
   <!-- Header -->
   <header>
@@ -141,7 +160,8 @@
     <div class="sidebar-header">📌 Menu</div>
     <ul>
       <li><a href="index.html">🏠 Dashboard</a></li>
-      <li><a href="financial.html">📝 Financial</a></li>
+      <li><a href="financial.html">💸 Financial</a></li>
+      <li><a href="planner.html">📅 Planner</a></li>
       <li><a href="notes.html">📝 Notes</a></li>
     </ul>
   </nav>
@@ -179,13 +199,13 @@
     import { getFirestore } from "https://www.gstatic.com/firebasejs/10.12.5/firebase-firestore.js";
 
     const firebaseConfig = {
-        apiKey: "AIzaSyCX2a-f1UK7iVC-TlmE2iekJMwIs5ccDQU",
-        authDomain: "financial-couple-dc3cf.firebaseapp.com",
-        projectId: "financial-couple-dc3cf",
-        storageBucket: "financial-couple-dc3cf.firebasestorage.app",
-        messagingSenderId: "533254877895",
-        appId: "1:533254877895:web:52b21c324bcf20f46704e2",
-        measurementId: "G-CJ8VGQGPK0"
+      apiKey: "AIzaSyCX2a-f1UK7iVC-TlmE2iekJMwIs5ccDQU",
+      authDomain: "financial-couple-dc3cf.firebaseapp.com",
+      projectId: "financial-couple-dc3cf",
+      storageBucket: "financial-couple-dc3cf.firebasestorage.app",
+      messagingSenderId: "533254877895",
+      appId: "1:533254877895:web:52b21c324bcf20f46704e2",
+      measurementId: "G-CJ8VGQGPK0"
     };
 
     const app = initializeApp(firebaseConfig);
@@ -202,4 +222,5 @@
     }
   </script>
 </body>
+
 </html>
