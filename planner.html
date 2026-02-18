@@ -194,9 +194,12 @@
 
                     const todayStr = new Date().toISOString().slice(0, 10); // Format "YYYY-MM-DD"
 
+
                     snapExpense.forEach(doc => {
                         const data = doc.data();
                         const amount = data.amount || 0;
+
+                        if ((data.note || "").toLowerCase().trim() === "kos") return;
 
                         // Hitung semua untuk saldo akhir
                         totalSharedSpentAllTime += amount;
