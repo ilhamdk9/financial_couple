@@ -534,7 +534,7 @@ async function installPWA() {
     const app = initializeApp(firebaseConfig);
     const db = getFirestore(app);
 
-    const DEFAULT_ILHAM=4636953, DEFAULT_ADEL=14010326;
+    const DEFAULT_ILHAM=0, DEFAULT_ADEL=0;
     const fmt = n=>new Intl.NumberFormat('id-ID',{style:'currency',currency:'IDR',maximumFractionDigits:0}).format(n||0);
     const today=()=>new Date().toISOString().slice(0,10);
 
